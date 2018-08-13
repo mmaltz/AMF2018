@@ -1,0 +1,19 @@
+#Link to Bioinformatics output in google drive:
+#Here is a link to the bioinformatics outputs for the salvage AMF: 
+
+# https://drive.google.com/file/d/1U3fnlS23M28yMr8qW8OODuBf4bUwfRpf/view?usp=sharing
+
+# I wasn't able to get all of the outputs from core diversity (Emperor plots, ANCOM, alphas diversity etc.) to work yet. 
+# However, all the outputs that my colleague uses when she analyzes these data (CSS normalized OTU tables, NMDS distance matrix) are there. I won't have time to work on this again for a little while because of ESA etc. Let me know if it it is important to you to have these outputs and I can work on it again when I have time. 
+#The bulk of the outputs that will be of interest to you are in this file path: 
+
+# Salvage_soil_Bioinformatics/SSU_Processing/swarm_otus_d4/OTU_tables_blast_taxonomy/core_diversity/
+
+# If you open the index.html file you can explore most of the outputs and see all the stuff that isn't working at the moment. 
+# For past analyses, these two files: 
+# Salvage_soil_Bioinformatics/SSU_Processing/swarm_otus_d4/OTU_tables_blast_taxonomy/core_diversity/005_table_depth7,660/OTU_tables/CSS_table_sorted.txt 
+# and 
+# Salvage_soil_Bioinformatics/SSU_Processing/swarm_otus_d4/OTU_tables_blast_taxonomy/core_diversity/005_table_depth7,660/CSS_normalized_output/beta_diversity/bray_curtis_nmds_converted.txt
+# were useful
+
+All the log files annotating the process are in the working directory
