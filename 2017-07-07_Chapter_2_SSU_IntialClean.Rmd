@@ -1,0 +1,175 @@
+---
+title: "2017-07-07_Chapter_2_SSU_IntialClean"
+Author: Michala Phillips
+Cleans OTU tables and sorts them by functional group and family. 
+output: html_notebook
+
+Load Required Packages
+```{r}
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+```
+Set wd and import data files
+```{r}
+setwd("D:/R_Workspace/Amplicon_stuff/Chapter_2_NAUData/data/SSU_redo")
+ssu<-read.csv("SSU_Redo_CSS_table_sorted_with_metadata1.csv")
+metassu<-read.csv("MP_SSU_MAP.csv")
+```
+Rename SSU hedings
+```{r}
+names(ssu)[names(ssu)=="ï...OTU.ID"] <- "ssuotu"
+names(ssu)[names(ssu)=="taxonomy"] <- "ssutaxonomy"
+names(ssu)[names(ssu)=="Kingdom"] <- "ssukingdom"
+names(ssu)[names(ssu)=="Phylum"] <- "ssuphylum"
+names(ssu)[names(ssu)=="Class"] <- "ssuclass"
+names(ssu)[names(ssu)=="Order"] <- "ssuorder"
+names(ssu)[names(ssu)=="Family"] <- "ssufamily"
+names(ssu)[names(ssu)=="Genus"] <- "ssugenus"
+names(ssu)[names(ssu)=="Species"] <- "ssuspecies"
+
+#remove Geosiphonaceae
+drop.family <- c(
+"Geosiphonaceae"
+)
+ssu  <- ssu[-which(ssu$ssufamily %in% drop.family),]
+
+drop <-c("No blast hit")
+ssu  <- ssu[-which(ssu$ssutaxonomy %in% drop),]
+
+```
+Add in functional groups 
+```{r}
+for (i in 1:595){
+  
+if (ssu$ssufamily[i]=="Glomeraceae") {
+  ssu$Functional.Group[i]<-"Rhizophilic"
+} else if ( ssu$ssufamily[i]=="Claroideoglomeraceae") {
+  ssu$Functional.Group[i]<-"Rhizophilic"
+} else if(ssu$ssufamily[i]=="Gigasporaceae"){
+  ssu$Functional.Group[i]<-"Edaphophilic"
+} else if(ssu$ssufamily[i]=="Diversisporaceae") {
+  ssu$Functional.Group[i]<-"Edaphophilic"
+} else if (ssu$ssufamily[i]=="Paraglomeraceae") {
+  ssu$Functional.Group[i]<-"Rhizophilic"
+} else if(ssu$ssufamily[i]=="Ambisporaceae"){
+  ssu$Functional.Group[i]<-"Ancestral"
+} else if(ssu$ssufamily[i]=="Archaeosporaceae"){
+  ssu$Functional.Group[i]<-"Ancestral"
+} else if(ssu$ssufamily[i]=="Acaulosporaceae"){
+  ssu$Functional.Group[i]<-"Ancestral"
+} 
+
+}
+  
+```
+Take data from wide to long and renaming variables
+```{r}
+ssul <-melt(ssu)
+names(ssul)[names(ssul)=="variable"] <- "ID"
+names(ssul)[names(ssul)=="value"] <- "ssureads"
+
+```
+Functional group OTU richnesses and read abundance for each functional group I LIKE THIS WAY A LOT BECAUSE YOU CAN NAME THE ACTUAL HEADERS
+
+Below is in format for graphing
+```{r}
+ssuguildREADRICH<- data.frame(ssul %>%
+                                group_by(ID,Functional.Group) %>%
+                                summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                                         Read_Abundance_Sample = sum(ssureads)
+                                ) 
+                              
+)
+
+
+```
+
+Make SSU data frame with family level OTU richness and Read abundance for each family
+```{r}
+ssufamily <- data.frame(ssul %>%
+                          group_by(ID, ssufamily) %>%
+                          summarise(Family_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
+                                    Family_Read_Abundance = sum(ssureads)
+                          ))
+
+
+```
+Add metadata into ssu family
+```{r}
+names(metassu)[names(metassu)=="SAMPLEID2"] <- "ID"
+ssufamily<-merge(ssufamily,metassu, by="ID")
+ssul<-merge(ssul,metassu,by="ID")
+
+```
+Adds meta data to data for box plot
+
+```{r}
+ssuguildREADRICH<-merge(ssuguildREADRICH,metassu, by="ID")
+#write.csv(ssuguildREADRICH, file = "2017_25_09_ssu_funcguild_read_rich.csv")
+###For ssufamily, moves ID to single line and family to the length
+LssufamilyOTURICH <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_OTU_Richness",  fun.aggregate = sum )
+LssufamilyOTUREAD <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_Read_Abundance",  fun.aggregate = sum )
+
+```
+
+Functional group read and richness together
+```{r} 
+ssuguildREADRICHlong<- data.frame(ssul %>%
+                                group_by(ID) %>%
+                                summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                                Ancestral_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Ancestral"])),
+                                Edaphophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Edaphophilic"])),
+                                Rhizophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Rhizophilic"])),
+                                Ancestral_Read_Abundance = sum(ssureads[Functional.Group == "Ancestral"]),
+                                Edaphophilic_Read_Abundance = sum(ssureads[Functional.Group == "Edaphophilic"]),
+                                Rhizophilic_Read_Abundance = sum(ssureads[Functional.Group == "Rhizophilic"]),
+                                Read_Abundance_Sample = sum(ssureads)
+                                ) 
+                              )
+
+ssuguildREADRICHlong <- merge(ssuguildREADRICHlong, metassu, by = "ID")                             
+#write.csv(ssuguildREADRICHlong, file = "2017_25_09_ssu_funcguild_read_rich.csv")
+```
+Functional group read and richness separate 
+```{r}
+ssuguildREAD<- data.frame(ssul %>%
+                            group_by(ID) %>%
+                            summarise(Ancestral_Read_Abundance = sum(ssureads[Functional.Group == "Ancestral"]),
+                            Edaphophilic_Read_Abundance = sum(ssureads[Functional.Group == "Edaphophilic"]),
+                            Rhizophilic_Read_Abundance = sum(ssureads[Functional.Group == "Rhizophilic"])
+                            ) 
+                          )
+
+ssuguildRICH<- data.frame(ssul %>%
+                            group_by(ID) %>%
+                            summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                            Ancestral_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Ancestral"])),
+                            Edaphophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Edaphophilic"])),
+                            Rhizophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Rhizophilic"]))
+                            ) 
+                          )
+```
+Add metadata to above 
+```{r}
+ssuguildRICH<-merge(ssuguildRICH, metassu, by="ID")
+ssuguildREAD<-merge(ssuguildREAD, metassu, by="ID")
+```
+
+Separating data by root and soil
+```{r}
+ssuroot.readreach<-subset(ssuguildREADRICH,ssuguildREADRICH$TYPE == "ROOT")
+ssuguildREADRICHlong<-merge(ssuguildREADRICHlong,metassu,by="ID")
+ssuroot.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == "ROOT")
+#soil
+ssusoil.readreach<-subset(ssuguildREADRICH,ssuguildREADRICH$TYPE == "SOIL")
+ssuguildREADRICHlong<-merge(ssuguildREADRICHlong,metassu,by="ID")
+ssusoil.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == "SOIL")
+```
+Pull out roots and soil for Family DFs
+```{r}
+ssufamroot<-subset.data.frame(ssufamily,TYPE == "ROOT")
+names(ssufamroot)[names(ssufamroot)=="ssufamily"]<-"Family"
+ssufamsoil<-subset.data.frame(ssufamily,TYPE == "SOIL")
+names(ssufamsoil)[names(ssufamsoil)=="ssufamily"]<-"Family"
+```
