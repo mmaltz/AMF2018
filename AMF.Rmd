@@ -74,31 +74,6 @@ ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blas
 
 ```
 Add in functional groups 
-```{r, eval=FALSE}
-
-for (i in 1:595){
-  
-if (ssu$ssufamily[i]=="Glomeraceae") {
-  ssu$Functional.Group[i]<-"Rhizophilic"
-} else if ( ssu$ssufamily[i]=="Claroideoglomeraceae") {
-  ssu$Functional.Group[i]<-"Rhizophilic"
-} else if(ssu$ssufamily[i]=="Gigasporaceae"){
-  ssu$Functional.Group[i]<-"Edaphophilic"
-} else if(ssu$ssufamily[i]=="Diversisporaceae") {
-  ssu$Functional.Group[i]<-"Edaphophilic"
-} else if (ssu$ssufamily[i]=="Paraglomeraceae") {
-  ssu$Functional.Group[i]<-"Rhizophilic"
-} else if(ssu$ssufamily[i]=="Ambisporaceae"){
-  ssu$Functional.Group[i]<-"Ancestral"
-} else if(ssu$ssufamily[i]=="Archaeosporaceae"){
-  ssu$Functional.Group[i]<-"Ancestral"
-} else if(ssu$ssufamily[i]=="Acaulosporaceae"){
-  ssu$Functional.Group[i]<-"Ancestral"
-} 
-
-}
-  
-```  
 
 ```{r}
 # this does the same as above but avoids hard coding names, more generalized
