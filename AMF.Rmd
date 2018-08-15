@@ -26,7 +26,7 @@ date
 
 ```
 
-** the floowing is adapted from "2017-07-07_Chapter_2_SSU_IntialClean"**  
+** the following is adapted from 2017-07-07_Chapter_2_SSU_IntialClean **  
 
 Import data files
 ```{r}
@@ -105,7 +105,7 @@ if (ssu$ssufamily[i]=="Glomeraceae") {
 ssu.fg <- ssu %>%
   mutate(Functional.Group = case_when(
     ssufamily %in% c('Glomeraceae','Claroideoglomeraceae', 'Paraglomeraceae') ~ 'Rhizophilic',
-    ssufamily %in% c('Gigasporaceae', 'Diversisporacea') ~ 'Edaphophilic',
+    ssufamily %in% c('Gigasporaceae', 'Diversisporaceae') ~ 'Edaphophilic',
     ssufamily %in% c('Ambisporaceae', 'Archaeosporaceae','Acaulosporaceae') ~ 'Ancestral'
   ))
 
@@ -145,10 +145,6 @@ ssufamily<-ssufamily%>%
   left_join(metassu, by='ID')
 str(ssufamily)
 
-```
-Adds meta data to data for box plot
-
-```{r}
 ssuguildREADRICH<-ssuguildREADRICH%>%
   left_join(metassu, by='ID')
 str(ssuguildREADRICH)  
@@ -156,10 +152,15 @@ str(ssuguildREADRICH)
 filename<-paste0(date, '_ssu_funcguild_read_rich.csv')
 write.csv(ssuguildREADRICH, file = filename, row.names=FALSE)
 
+```
+Adds meta data to data for box plot
+
+```{r}
 ###For ssufamily, moves ID to single line and family to the length
 LssufamilyOTURICH <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_OTU_Richness",  fun.aggregate = sum )
 LssufamilyOTUREAD <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_Read_Abundance",  fun.aggregate = sum )
 
+head(LssufamilyOTUREAD)
 ```
 
 Functional group read and richness together
@@ -174,7 +175,7 @@ ssuguildREADRICHlong<- data.frame(ssul %>%
                                 Edaphophilic_Read_Abundance = sum(ssureads[Functional.Group == "Edaphophilic"]),
                                 Rhizophilic_Read_Abundance = sum(ssureads[Functional.Group == "Rhizophilic"]),
                                 Read_Abundance_Sample = sum(ssureads)))
-
+View(ssuguildREADRICHlong)
 ssuguildREADRICHlong <- merge(ssuguildREADRICHlong, metassu, by = "ID")
 
 filename<-paste0(date, '_ssu_funcguild_read_rich.csv')
