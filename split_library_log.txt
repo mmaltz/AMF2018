@@ -1,0 +1,1054 @@
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS704_lane1_pair1_.fastq (md5: df139c084ac60231f7239129745a5b7e)
+Quality filter results
+Total number of input sequences: 33081
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 5
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	33076
+
+Total number seqs written	33076
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS715_lane1_pair1_.fastq (md5: fe7792689a2124f2671d658ce4948c7b)
+Quality filter results
+Total number of input sequences: 39506
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 7
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	39499
+
+Total number seqs written	39499
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS921_lane1_pair1_.fastq (md5: c1b6d336d80699ed6c88ac0e617a8eb1)
+Quality filter results
+Total number of input sequences: 82897
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 4
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	82893
+
+Total number seqs written	82893
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS890_lane1_pair1_.fastq (md5: 45eb99d6884cdc0f47d6b004064f2c93)
+Quality filter results
+Total number of input sequences: 60663
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 8
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	60655
+
+Total number seqs written	60655
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS918_lane1_pair1_.fastq (md5: 2276198ef75716c30e3bae1850f1cdc9)
+Quality filter results
+Total number of input sequences: 43214
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 1
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	43213
+
+Total number seqs written	43213
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS905_lane1_pair1_.fastq (md5: 17f8375bce8284490717a47dbf43999f)
+Quality filter results
+Total number of input sequences: 95841
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 16
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	95825
+
+Total number seqs written	95825
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS891_lane1_pair1_.fastq (md5: fccd01511aa81982c70698699516488d)
+Quality filter results
+Total number of input sequences: 65479
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 10
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	65469
+
+Total number seqs written	65469
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS910_lane1_pair1_.fastq (md5: 605bfdcb783dd218cf0a0cd032051fbe)
+Quality filter results
+Total number of input sequences: 45654
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 5
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	45649
+
+Total number seqs written	45649
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS923_lane1_pair1_.fastq (md5: d5edf3919aa680cf8128a53e35486f93)
+Quality filter results
+Total number of input sequences: 53639
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 9
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	53630
+
+Total number seqs written	53630
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS904_lane1_pair1_.fastq (md5: 7578bfdc8cc5ddb2e2b3f0fdd47c889d)
+Quality filter results
+Total number of input sequences: 83703
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 11
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	83692
+
+Total number seqs written	83692
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMM943M_lane1_pair1_.fastq (md5: acd103c4a68b67cbb73383bc6a192b85)
+Quality filter results
+Total number of input sequences: 101262
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 12
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	101250
+
+Total number seqs written	101250
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMM9362CU_lane1_pair1_.fastq (md5: 13f21897caf2353bb3d4a1e8c859099c)
+Quality filter results
+Total number of input sequences: 173240
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 33
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	173207
+
+Total number seqs written	173207
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS908_lane1_pair1_.fastq (md5: 50db1257210d3b99a85ab7f07260ccc3)
+Quality filter results
+Total number of input sequences: 56728
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 10
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	56718
+
+Total number seqs written	56718
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS932_lane1_pair1_.fastq (md5: 99440eaa07d36e436f7dfc379fb27331)
+Quality filter results
+Total number of input sequences: 39127
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 3
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	39124
+
+Total number seqs written	39124
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS900_lane1_pair1_.fastq (md5: 03886878c3c880eae993234b8239c425)
+Quality filter results
+Total number of input sequences: 63801
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 12
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	63789
+
+Total number seqs written	63789
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMM936M_lane1_pair1_.fastq (md5: ecbf32e78995498db0a59c2566b29f92)
+Quality filter results
+Total number of input sequences: 91581
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 15
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	91566
+
+Total number seqs written	91566
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS912_lane1_pair1_.fastq (md5: 2372ebad38aad08e29da7b9aa781f146)
+Quality filter results
+Total number of input sequences: 66742
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	66736
+
+Total number seqs written	66736
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS931_lane1_pair1_.fastq (md5: bc33d0fa4b81039b5485be0a14491a44)
+Quality filter results
+Total number of input sequences: 59076
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 8
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	59068
+
+Total number seqs written	59068
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS713_lane1_pair1_.fastq (md5: 5709d6f556baeffdc7bdc9349b52f67f)
+Quality filter results
+Total number of input sequences: 79609
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 12
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	79597
+
+Total number seqs written	79597
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS717_lane1_pair1_.fastq (md5: b52cad264c7c3a966b3bdc5195d9433f)
+Quality filter results
+Total number of input sequences: 35909
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 5
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	35904
+
+Total number seqs written	35904
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS930_lane1_pair1_.fastq (md5: b4c61ea38841bc9a1eacac4d2c45005d)
+Quality filter results
+Total number of input sequences: 53880
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 3
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	53877
+
+Total number seqs written	53877
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS909_lane1_pair1_.fastq (md5: 8c210c3c2b67a32cc853594deee50651)
+Quality filter results
+Total number of input sequences: 51551
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 15
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	51536
+
+Total number seqs written	51536
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS716_lane1_pair1_.fastq (md5: 28baa72c2f76246e498ae929150fb1d8)
+Quality filter results
+Total number of input sequences: 102051
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 19
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	102032
+
+Total number seqs written	102032
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS926_lane1_pair1_.fastq (md5: c455cb89ef1df6d0a5159e0893cbbece)
+Quality filter results
+Total number of input sequences: 23249
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 2
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	23247
+
+Total number seqs written	23247
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS705_lane1_pair1_.fastq (md5: e5421162ef3120dad858917dea404102)
+Quality filter results
+Total number of input sequences: 25286
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 4
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	25282
+
+Total number seqs written	25282
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS902_lane1_pair1_.fastq (md5: 1b9510b8f23762728647cb4948468c7b)
+Quality filter results
+Total number of input sequences: 75071
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 15
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	75056
+
+Total number seqs written	75056
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS714_lane1_pair1_.fastq (md5: 60d24ebf9fa3a2be6ff5ccea81d338f7)
+Quality filter results
+Total number of input sequences: 62332
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 12
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	62320
+
+Total number seqs written	62320
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS920_lane1_pair1_.fastq (md5: 080036cfbd730722baf48dac84bf4d4f)
+Quality filter results
+Total number of input sequences: 33873
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 7
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	33866
+
+Total number seqs written	33866
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS914_lane1_pair1_.fastq (md5: 40722fa26c2526357bac920f37403dad)
+Quality filter results
+Total number of input sequences: 47261
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	47255
+
+Total number seqs written	47255
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS700_lane1_pair1_.fastq (md5: 622d39794322e85bfd78068927cf0bb9)
+Quality filter results
+Total number of input sequences: 43756
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 5
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	43751
+
+Total number seqs written	43751
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS706_lane1_pair1_.fastq (md5: 1da1104caaf0158f9ec260ae80c2d785)
+Quality filter results
+Total number of input sequences: 60629
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 12
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	60617
+
+Total number seqs written	60617
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS916_lane1_pair1_.fastq (md5: 4a7dde3ea01d6a788ee21a5c9655014d)
+Quality filter results
+Total number of input sequences: 37192
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	37186
+
+Total number seqs written	37186
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS929_lane1_pair1_.fastq (md5: b964419d2a17bcaf3699aace3545115f)
+Quality filter results
+Total number of input sequences: 91245
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 24
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	91221
+
+Total number seqs written	91221
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS701_lane1_pair1_.fastq (md5: e71260210ccdb23f5655cde3382767d6)
+Quality filter results
+Total number of input sequences: 60869
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 8
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	60861
+
+Total number seqs written	60861
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS707_lane1_pair1_.fastq (md5: 6782bdc4b62c43cd5cc9d98346f56512)
+Quality filter results
+Total number of input sequences: 45459
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 8
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	45451
+
+Total number seqs written	45451
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS711_lane1_pair1_.fastq (md5: b381ebe5cacba2388ecbbcc309165e81)
+Quality filter results
+Total number of input sequences: 55761
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 9
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	55752
+
+Total number seqs written	55752
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS903_lane1_pair1_.fastq (md5: ba0c1bb81990ff51fe2ecfe23cd74160)
+Quality filter results
+Total number of input sequences: 97453
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 16
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	97437
+
+Total number seqs written	97437
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS919_lane1_pair1_.fastq (md5: e07db8fcfe033ae731bc0abb2337297e)
+Quality filter results
+Total number of input sequences: 45642
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 7
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	45635
+
+Total number seqs written	45635
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS924_lane1_pair1_.fastq (md5: 732850a96bb5172f7528f4eb5ff06e4b)
+Quality filter results
+Total number of input sequences: 21591
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 3
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	21588
+
+Total number seqs written	21588
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS917_lane1_pair1_.fastq (md5: 125b1ba335dd0914165a308a3ee31119)
+Quality filter results
+Total number of input sequences: 29852
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 5
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	29847
+
+Total number seqs written	29847
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS928_lane1_pair1_.fastq (md5: cb64f26211c976e621ca00d1ff25045b)
+Quality filter results
+Total number of input sequences: 52973
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 7
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	52966
+
+Total number seqs written	52966
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS710_lane1_pair1_.fastq (md5: 850c3bbac7034c5c5e1dc6c63f667db6)
+Quality filter results
+Total number of input sequences: 42910
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 7
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	42903
+
+Total number seqs written	42903
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS907_lane1_pair1_.fastq (md5: 8d32dcd104aa629a69f4b15b1f3ca070)
+Quality filter results
+Total number of input sequences: 92722
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 18
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	92704
+
+Total number seqs written	92704
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS925_lane1_pair1_.fastq (md5: 03778977c352fef6c940247fa3585b5e)
+Quality filter results
+Total number of input sequences: 37939
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 2
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	37937
+
+Total number seqs written	37937
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMM933M_lane1_pair1_.fastq (md5: 53cfcec9be8e04728c3b4e9df82feb7d)
+Quality filter results
+Total number of input sequences: 101239
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 15
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	101224
+
+Total number seqs written	101224
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS913_lane1_pair1_.fastq (md5: 78581ab47d113d907d4e203507060b31)
+Quality filter results
+Total number of input sequences: 87344
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 11
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	87333
+
+Total number seqs written	87333
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS942_lane1_pair1_.fastq (md5: 0a22a541de502dbb6f0ed44536bd1fba)
+Quality filter results
+Total number of input sequences: 30081
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	30075
+
+Total number seqs written	30075
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS901_lane1_pair1_.fastq (md5: 03c2692101ea66532817cb4fddb46ef2)
+Quality filter results
+Total number of input sequences: 41284
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 3
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	41281
+
+Total number seqs written	41281
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS944_lane1_pair1_.fastq (md5: 2a3006bb5ed2a6db78cb8b91e5101100)
+Quality filter results
+Total number of input sequences: 43189
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 2
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	43187
+
+Total number seqs written	43187
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS906_lane1_pair1_.fastq (md5: bf9ffa994982edd98f739154e1b82504)
+Quality filter results
+Total number of input sequences: 45186
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 7
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	45179
+
+Total number seqs written	45179
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS943_lane1_pair1_.fastq (md5: 286599db280632fe9f9b23ba0c69d590)
+Quality filter results
+Total number of input sequences: 34859
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	34853
+
+Total number seqs written	34853
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS708_lane1_pair1_.fastq (md5: 4d33a68dbf0f219d469d1695f8002332)
+Quality filter results
+Total number of input sequences: 24437
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 3
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	24434
+
+Total number seqs written	24434
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS922_lane1_pair1_.fastq (md5: 95e2499833de920e1ec41f03d572ca30)
+Quality filter results
+Total number of input sequences: 49646
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 4
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	49642
+
+Total number seqs written	49642
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS939_lane1_pair1_.fastq (md5: ec06ed10ef1931b08b44d347261fa977)
+Quality filter results
+Total number of input sequences: 34276
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	34270
+
+Total number seqs written	34270
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS703_lane1_pair1_.fastq (md5: 883b9c7f83d803dc15babccaaec9c3db)
+Quality filter results
+Total number of input sequences: 31877
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 2
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	31875
+
+Total number seqs written	31875
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS709_lane1_pair1_.fastq (md5: 8c723f93a2bfc11652bf88acb8cbf0b8)
+Quality filter results
+Total number of input sequences: 165411
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 25
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	165386
+
+Total number seqs written	165386
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS938_lane1_pair1_.fastq (md5: aa3ec802263876474a4e99c353071400)
+Quality filter results
+Total number of input sequences: 22068
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 3
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	22065
+
+Total number seqs written	22065
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS911_lane1_pair1_.fastq (md5: 3f10a0829adc4a62584177b46d103d94)
+Quality filter results
+Total number of input sequences: 40380
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 4
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	40376
+
+Total number seqs written	40376
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS702_lane1_pair1_.fastq (md5: b66ff7033b742ac2a5c6c2676e9340ec)
+Quality filter results
+Total number of input sequences: 40604
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 2
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	40602
+
+Total number seqs written	40602
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS915_lane1_pair1_.fastq (md5: d0a236eb8b7035da08631f199128f574)
+Quality filter results
+Total number of input sequences: 39646
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 6
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	39640
+
+Total number seqs written	39640
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMM941M_lane1_pair1_.fastq (md5: 0ae56a9cb7c05f68e5014fad1e27acd4)
+Quality filter results
+Total number of input sequences: 121779
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 12
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	121767
+
+Total number seqs written	121767
+---
+
+Input file paths
+Sequence read filepath: /media/michala6/241646A01646733A/bioinformatics_stuff/Salvage_soil_Bioinformatics/SSU_rawdata/SSU_rawdataMMS712_lane1_pair1_.fastq (md5: 369d878b4b3d89ec6dca5369968b6eb6)
+Quality filter results
+Total number of input sequences: 64831
+Barcode not in mapping file: 0
+Read too short after quality truncation: 0
+Count of N characters exceeds limit: 10
+Illumina quality digit = 0: 0
+Barcode errors exceed max: 0
+
+Result summary (after quality filtering)
+Median sequence length: 301.00
+SSU	64821
+
+Total number seqs written	64821
+---
+
