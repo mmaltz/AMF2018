@@ -1,0 +1,2 @@
+OTU table file: swarm_otus_d4/OTU_tables_blast_taxonomy/core_diversity/005_table_depth7,660/OTU_tables/CSS_table_sorted.biom
+sample names: *
