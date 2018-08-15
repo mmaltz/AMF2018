@@ -1,0 +1,60 @@
+Category: Year
+Method: bray_curtis
+
+Category: Year
+Method: chord
+
+Category: Year
+Method: hellinger
+
+Category: Year
+Method: kulczynski
+
+Category: Site
+Method: bray_curtis
+
+Category: Site
+Method: chord
+
+Category: Site
+Method: hellinger
+
+Category: Site
+Method: kulczynski
+
+Category: Treat
+Method: bray_curtis
+
+Category: Treat
+Method: chord
+
+Category: Treat
+Method: hellinger
+
+Category: Treat
+Method: kulczynski
+
+Category: Rep
+Method: bray_curtis
+
+Category: Rep
+Method: chord
+
+Category: Rep
+Method: hellinger
+
+Category: Rep
+Method: kulczynski
+
+Category: TSDel
+Method: bray_curtis
+
+Category: TSDel
+Method: chord
+
+Category: TSDel
+Method: hellinger
+
+Category: TSDel
+Method: kulczynski
+
