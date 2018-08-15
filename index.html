@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<!-- akutils v1.2 -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>akutils core diversity output: 005_table.biom</title>
+    <link rel="stylesheet" href=".html/akutils.css">
+    <meta name="viewport" content="width=device-width">
+    <script>document.documentElement.className = "js";</script>
+    <script src=".html/jquery-1.9.1.js"></script>
+    <script src=".html/json2.js"></script>
+    <script src=".html/jquery.collapse.js"></script>
+    <script src=".html/jquery.collapse_storage.js"></script>
+  </head>
+  <body>
+        <script>
+		document.write('<style type="text/css">body{display:none}</style>');
+		jQuery(function($) {
+		$('body').css('display','block');
+		});
+        </script>
+<br>
+<a href="http://www.qiime.org" target="_blank"><img src=".html/qiimelogo.png" alt="www.qiime.org""/></a><p>
+    <h1><a STYLE="text-decoration:none" href="https://github.com/alk224/akutils" target="_blank">akutils core diversity output (v1.2)</a></h1>
+    <h5><a STYLE="text-decoration:none" target="_blank">Processed OTU table: 005_table.biom</a><br>
+    <a STYLE="text-decoration:none" target="_blank">Rarefaction depth:   7,660</a></h5>
+
+    <div class="col c1">
+      <h2>Summary data:</h2>
+      <div id="result1" data-collapse="accordion persist">
+        <h3>Run summary data</h3>
+        <div>
+        <!-- anchor01 -->
+<table class="center" border=1>
+<tr><td> Master run log </td><td> <a href="./log_core_diversity_20180805_1017PM.txt" target="_blank"> log_core_diversity_20180805_1017PM.txt </a></td></tr>
+<tr><td> Input OTU table statistics </td><td> <a href="./OTU_tables/005_table.summary" target="_blank"> 005_table.summary </a></td></tr>
+<tr><td> Rarefied OTU table statistics (depth = 7,660) </td><td> <a href="./OTU_tables/rarefied_table.summary" target="_blank"> rarefied_table.summary </a></td></tr>
+<tr><td> Sample-filtered OTU table statistics </td><td> <a href="./OTU_tables/sample_filtered_table.summary" target="_blank"> sample_filtered_table.summary </a></td></tr>
+<tr><td> CSS-normalized OTU table statistics </td><td> <a href="./OTU_tables/CSS_table.summary" target="_blank"> CSS_table.summary </a></td></tr>
+<tr><td> DESeq2-normalized OTU table statistics </td><td> <a href="./OTU_tables/DESeq2_table.summary" target="_blank"> DESeq2_table.summary </a></td></tr>
+</table>
+        </div>
+        <h3>OTU tables and sample metadata</h3>
+        <div>
+        <!-- anchor02 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Metadata (input mapping file) </td></tr>
+<tr><td> Input metadata mapping file </td><td> <a href="./OTU_tables/input_mapping_file.txt" target="_blank"> input_mapping_file.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Input OTU table </td></tr>
+<tr><td> Input OTU table (BIOM format, zero count OTUs removed) </td><td> <a href="./OTU_tables/005_table.biom" target="_blank"> 005_table.biom </a></td></tr>
+<tr><td> Input OTU table (tab-delimited format, zero count OTUs removed) </td><td> <a href="./OTU_tables/005_table.txt" target="_blank"> 005_table.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Rarefied OTU tables (depth = 7,660) </td></tr>
+<tr><td> Rarefied OTU table (BIOM format) </td><td> <a href="./OTU_tables/rarefied_table_sorted.biom" target="_blank"> rarefied_table_sorted.biom </a></td></tr>
+<tr><td> Rarefied OTU table with metadata (BIOM format) </td><td> <a href="./OTU_tables/rarefied_table_sorted_with_metadata.biom" target="_blank"> rarefied_table_sorted_with_metadata.biom </a></td></tr>
+<tr><td> Rarefied OTU table (tab-delimited format) </td><td> <a href="./OTU_tables/rarefied_table_sorted.txt" target="_blank"> rarefied_table_sorted.txt </a></td></tr>
+<tr><td> Rarefied OTU table, relativized (BIOM format) </td><td> <a href="./OTU_tables/rarefied_table_sorted_relativized.biom" target="_blank"> rarefied_table_sorted_relativized.biom </a></td></tr>
+<tr><td> Rarefied OTU table, relativized with metadata (BIOM format) </td><td> <a href="./OTU_tables/rarefied_table_sorted_relativized_with_metadata.biom" target="_blank"> rarefied_table_sorted_relativized_with_metadata.biom </a></td></tr>
+<tr><td> Rarefied OTU table, relativized (tab-delimited format) </td><td> <a href="./OTU_tables/rarefied_table_sorted_relativized.txt" target="_blank"> rarefied_table_sorted_relativized.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Sample-filtered OTU tables (input OTU table filtered for samples removed during rarefaction) </td></tr>
+<tr><td> Sample-filtered table (input for normalization, BIOM format) </td><td> <a href="./OTU_tables/sample_filtered_table.biom" target="_blank"> sample_filtered_table.biom </a></td></tr>
+<tr><td> Sample-filtered table (input for normalization, tab-delimited format) </td><td> <a href="./OTU_tables/sample_filtered_table.txt" target="_blank"> sample_filtered_table.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> CSS-normalized OTU tables (CSS transformation of sample-filtered table) </td></tr>
+<tr><td> CSS-normalized OTU table (BIOM format) </td><td> <a href="./OTU_tables/CSS_table_sorted.biom" target="_blank"> CSS_table_sorted.biom </a></td></tr>
+<tr><td> CSS-normalized OTU table with metadata (BIOM format) </td><td> <a href="./OTU_tables/CSS_table_sorted_with_metadata.biom" target="_blank"> CSS_table_sorted_with_metadata.biom </a></td></tr>
+<tr><td> CSS-normalized OTU table (tab-delimited format) </td><td> <a href="./OTU_tables/CSS_table_sorted.txt" target="_blank"> CSS_table_sorted.txt </a></td></tr>
+<tr><td> CSS-normalized OTU table, relativized (BIOM format) </td><td> <a href="./OTU_tables/CSS_table_sorted_relativized.biom" target="_blank"> CSS_table_sorted_relativized.biom </a></td></tr>
+<tr><td> CSS-normalized OTU table, relativized with metadata (BIOM format) </td><td> <a href="./OTU_tables/CSS_table_sorted_relativized_with_metadata.biom" target="_blank"> CSS_table_sorted_relativized_with_metadata.biom </a></td></tr>
+<tr><td> CSS-normalized OTU table, relativized (tab-delimited format) </td><td> <a href="./OTU_tables/CSS_table_sorted_relativized.txt" target="_blank"> CSS_table_sorted_relativized.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> DESeq2-normalized OTU tables (DESeq2 transformation of sample-filtered table) </td></tr>
+<tr><td> DESeq2-normalized OTU table (BIOM format) </td><td> <a href="./OTU_tables/DESeq2_table_sorted.biom" target="_blank"> DESeq2_table_sorted.biom </a></td></tr>
+<tr><td> DESeq2-normalized OTU table with metadata (BIOM format) </td><td> <a href="./OTU_tables/DESeq2_table_sorted_with_metadata.biom" target="_blank"> DESeq2_table_sorted_with_metadata.biom </a></td></tr>
+<tr><td> DESeq2-normalized OTU table (tab-delimited format) </td><td> <a href="./OTU_tables/DESeq2_table_sorted.txt" target="_blank"> DESeq2_table_sorted.txt </a></td></tr>
+<tr><td> DESeq2-normalized OTU table, relativized (BIOM format) </td><td> <a href="./OTU_tables/DESeq2_table_sorted_relativized.biom" target="_blank"> DESeq2_table_sorted_relativized.biom </a></td></tr>
+<tr><td> DESeq2-normalized OTU table, relativized with metadata (BIOM format) </td><td> <a href="./OTU_tables/DESeq2_table_sorted_relativized_with_metadata.biom" target="_blank"> DESeq2_table_sorted_relativized_with_metadata.biom </a></td></tr>
+<tr><td> DESeq2-normalized OTU table, relativized (tab-delimited format) </td><td> <a href="./OTU_tables/DESeq2_table_sorted_relativized.txt" target="_blank"> DESeq2_table_sorted_relativized.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Sequencing summary data by L7 taxon assignment</h3>
+        <div>
+        <!-- anchor03 -->
+        </div>
+      </div>
+
+      <h2>DNA sequences (akutils output):</h2>
+      <div id="result5" data-collapse="accordion persist">
+        <h3>Unaligned sequences (fasta format)</h3>
+        <div>
+        <!-- anchor18 -->
+<table class="center" border=1>
+</table>
+        </div>
+        <h3>MAFFT alignments of multi-sequence OTUs (clustal format)</h3>
+        <div>
+        <!-- anchor19 -->
+<table class="center" border=1>
+</table>
+        </div>
+      </div>
+
+      <h2>CSS-normalized analysis results (QIIME output):</h2>
+      <div id="result2" data-collapse="accordion persist">
+        <h3>Taxonomic plots</h3>
+        <div>
+        <!-- anchor04 -->
+        </div>
+        <h3>Beta diversity</h3>
+        <div>
+        <!-- anchor06 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Beta diversity comparisons (CSS normalized) </td></tr>
+<tr><td> Anosim results (CSS normalized) </td><td> <a href="./CSS_normalized_output/beta_diversity/anosim_results_collated.txt" target="_blank"> anosim_results_collated.txt -- CSS NORMALIZED DATA </a></td></tr>
+<tr><td> Adonis results (CSS normalized) </td><td> <a href="./CSS_normalized_output/beta_diversity/adonis_results_collated.txt" target="_blank"> adonis_results_collated.txt -- CSS NORMALIZED DATA </a></td></tr>
+<tr><td> DB-RDA results (CSS normalized) </td><td> <a href="./CSS_normalized_output/beta_diversity/dbrda_results_collated.txt" target="_blank"> dbrda_results_collated.txt -- CSS NORMALIZED DATA </a></td></tr>
+<tr><td> Permanova results (CSS normalized) </td><td> <a href="./CSS_normalized_output/beta_diversity/permanova_results_collated.txt" target="_blank"> permanova_results_collated.txt -- CSS NORMALIZED DATA </a></td></tr>
+<tr><td> Permdisp results (CSS normalized) </td><td> <a href="./CSS_normalized_output/beta_diversity/permdisp_results_collated.txt" target="_blank"> permdisp_results_collated.txt -- CSS NORMALIZED DATA </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> bray_curtis </td></tr>
+<tr><td> Distance boxplots (Year, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/bray_curtis_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (bray_curtis, stress	0.12244960316289956	0	0) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_dm.txt" target="_blank"> bray_curtis_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_pc.txt" target="_blank"> bray_curtis_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/bray_curtis_nmds.txt" target="_blank"> bray_curtis_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> chord </td></tr>
+<tr><td> Distance boxplots (Year, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/chord_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (chord, stress	0.134236943328388	0	0) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_dm.txt" target="_blank"> chord_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_pc.txt" target="_blank"> chord_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/chord_nmds.txt" target="_blank"> chord_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> hellinger </td></tr>
+<tr><td> Distance boxplots (Year, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/hellinger_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (hellinger, stress	0.13713548569355194	0	0) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_dm.txt" target="_blank"> hellinger_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_pc.txt" target="_blank"> hellinger_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/hellinger_nmds.txt" target="_blank"> hellinger_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> kulczynski </td></tr>
+<tr><td> Distance boxplots (Year, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/kulczynski_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (kulczynski, stress	0.12313411459009772	0	0) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_dm.txt" target="_blank"> kulczynski_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_pc.txt" target="_blank"> kulczynski_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/kulczynski_nmds.txt" target="_blank"> kulczynski_nmds.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Group significance (Kruskal-Wallis from QIIME)</h3>
+        <div>
+        <!-- anchor07 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (Kruskal-Wallis - nonparametric ANOVA) <br><br> All mean values are percent of total counts by sample (relative OTU abundances) </td></tr>
+</table>
+        </div>
+        <h3>Group significance (ANCOM from ancom.R via akutils)</h3>
+        <div>
+        <!-- anchor77 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (ANCOM - Analysis of Composition of Microbiomes - alpha = 0.05) <br><br> ANCOM tends to fail when there are few OTUs or taxa considered (such as L2 tables) </td></tr>
+</table>
+        </div>
+        <h3>Group significance (Indicator Species from indicspecies via akutils)</h3>
+        <div>
+        <!-- anchor87 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (Indicator species analysis - 9999 permutations) <br></td></tr>
+</table>
+        </div>
+        <h3>Rank abundance</h3>
+        <div>
+        <!-- anchor08 -->
+<table class="center" border=1>
+
+<tr><td> Rank abundance (xlog-ylog) </td><td> <a href="./CSS_normalized_output/RankAbundance/rankabund_xlog-ylog.pdf" target="_blank"> rankabund_xlog-ylog.pdf </a></td></tr>
+<tr><td> Rank abundance (xlinear-ylog) </td><td> <a href="./CSS_normalized_output/RankAbundance/rankabund_xlinear-ylog.pdf" target="_blank"> rankabund_xlinear-ylog.pdf </a></td></tr>
+<tr><td> Rank abundance (xlog-ylinear) </td><td> <a href="./CSS_normalized_output/RankAbundance/rankabund_xlog-ylinear.pdf" target="_blank"> rankabund_xlog-ylinear.pdf </a></td></tr>
+<tr><td> Rank abundance (xlinear-ylinear) </td><td> <a href="./CSS_normalized_output/RankAbundance/rankabund_xlinear-ylinear.pdf" target="_blank"> rankabund_xlinear-ylinear.pdf </a></td></tr>
+</table>
+        </div>
+        <h3>Supervised learning</h3>
+        <div>
+        <!-- anchor09 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Supervised learning results <br><br> Out-of-bag analysis (oob) </td></tr>
+<tr><td> Summary (Year) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Year/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Year) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Year/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Year) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Year/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Year) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Year/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Year) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Year/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Site) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Site/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Site) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Site/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Site) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Site/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Site) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Site/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Site) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Site/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Treat) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Treat/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Treat) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Treat/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Treat) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Treat/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Treat) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Treat/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Treat) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Treat/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Rep) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Rep/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Rep) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Rep/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Rep) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Rep/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Rep) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Rep/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Rep) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/Rep/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (TSDel) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/TSDel/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (TSDel) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/TSDel/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (TSDel) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/TSDel/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (TSDel) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/TSDel/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (TSDel) </td><td> <a href="./CSS_normalized_output/SupervisedLearning/TSDel/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Biplots</h3>
+        <div>
+        <!-- anchor10 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Biplots -- CSS NORMALIZED DATA </td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (bray_curtis) </td><td> <a href="./CSS_normalized_output/beta_diversity/biplots/bray_curtis/CSS_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (chord) </td><td> <a href="./CSS_normalized_output/beta_diversity/biplots/chord/CSS_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (hellinger) </td><td> <a href="./CSS_normalized_output/beta_diversity/biplots/hellinger/CSS_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (kulczynski) </td><td> <a href="./CSS_normalized_output/beta_diversity/biplots/kulczynski/CSS_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+</table>
+        </div>
+      </div>
+
+      <h2>DESeq2-normalized analysis results (QIIME output):</h2>
+      <div id="result2" data-collapse="accordion persist">
+        <h3>Taxonomic plots</h3>
+        <div>
+        <!-- anchor0004 -->
+        </div>
+        <h3>Beta diversity</h3>
+        <div>
+        <!-- anchor0006 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Beta diversity comparisons (DESeq2 normalized) </td></tr>
+<tr><td> Anosim results (DESeq2 normalized) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/anosim_results_collated.txt" target="_blank"> anosim_results_collated.txt -- DESeq2 NORMALIZED DATA </a></td></tr>
+<tr><td> Adonis results (DESeq2 normalized) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/adonis_results_collated.txt" target="_blank"> adonis_results_collated.txt -- DESeq2 NORMALIZED DATA </a></td></tr>
+<tr><td> DB-RDA results (DESeq2 normalized) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/dbrda_results_collated.txt" target="_blank"> dbrda_results_collated.txt -- DESeq2 NORMALIZED DATA </a></td></tr>
+<tr><td> Permanova results (DESeq2 normalized) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/permanova_results_collated.txt" target="_blank"> permanova_results_collated.txt -- DESeq2 NORMALIZED DATA </a></td></tr>
+<tr><td> Permdisp results (DESeq2 normalized) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/permdisp_results_collated.txt" target="_blank"> permdisp_results_collated.txt -- DESeq2 NORMALIZED DATA </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> bray_curtis </td></tr>
+<tr><td> Distance boxplots (Year, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/bray_curtis_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (bray_curtis, stress	0.12584987812265172	0	0) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_dm.txt" target="_blank"> bray_curtis_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_pc.txt" target="_blank"> bray_curtis_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/bray_curtis_nmds.txt" target="_blank"> bray_curtis_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> chord </td></tr>
+<tr><td> Distance boxplots (Year, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/chord_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (chord, stress	0.14016312458806998	0	0) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_dm.txt" target="_blank"> chord_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_pc.txt" target="_blank"> chord_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/chord_nmds.txt" target="_blank"> chord_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> hellinger </td></tr>
+<tr><td> Distance boxplots (Year, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/hellinger_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (hellinger, stress	0.1358004289059263	0	0) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_dm.txt" target="_blank"> hellinger_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_pc.txt" target="_blank"> hellinger_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/hellinger_nmds.txt" target="_blank"> hellinger_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> kulczynski </td></tr>
+<tr><td> Distance boxplots (Year, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Year, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Site, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Site, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Treat, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Treat, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (Rep, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (Rep, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (TSDel, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (TSDel, kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/2D_PCoA_bdiv_plots/kulczynski_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (kulczynski, stress	0.12685271974103351	0	0) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot_directory </a></td></tr>
+<tr><td> Distance matrix (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_dm.txt" target="_blank"> kulczynski_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_pc.txt" target="_blank"> kulczynski_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/kulczynski_nmds.txt" target="_blank"> kulczynski_nmds.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Group significance (Kruskal-Wallis from QIIME)</h3>
+        <div>
+        <!-- anchor0007 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (Kruskal-Wallis - nonparametric ANOVA) <br><br> All mean values are percent of total counts by sample (relative OTU abundances) </td></tr>
+</table>
+        </div>
+        <h3>Group significance (ANCOM from ancom.R via akutils)</h3>
+        <div>
+        <!-- anchor0077 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (ANCOM - Analysis of Composition of Microbiomes - alpha = 0.05) <br><br> ANCOM tends to fail when there are few OTUs or taxa considered (such as L2 tables) </td></tr>
+</table>
+        </div>
+        <h3>Group significance (Indicator Species from indicspecies via akutils)</h3>
+        <div>
+        <!-- anchor0087 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (Indicator species analysis - 9999 permutations) <br></td></tr>
+</table>
+        </div>
+        <h3>Rank abundance</h3>
+        <div>
+        <!-- anchor0008 -->
+<table class="center" border=1>
+
+<tr><td> Rank abundance (xlog-ylog) </td><td> <a href="./DESeq2_normalized_output/RankAbundance/rankabund_xlog-ylog.pdf" target="_blank"> rankabund_xlog-ylog.pdf </a></td></tr>
+<tr><td> Rank abundance (xlinear-ylog) </td><td> <a href="./DESeq2_normalized_output/RankAbundance/rankabund_xlinear-ylog.pdf" target="_blank"> rankabund_xlinear-ylog.pdf </a></td></tr>
+<tr><td> Rank abundance (xlog-ylinear) </td><td> <a href="./DESeq2_normalized_output/RankAbundance/rankabund_xlog-ylinear.pdf" target="_blank"> rankabund_xlog-ylinear.pdf </a></td></tr>
+<tr><td> Rank abundance (xlinear-ylinear) </td><td> <a href="./DESeq2_normalized_output/RankAbundance/rankabund_xlinear-ylinear.pdf" target="_blank"> rankabund_xlinear-ylinear.pdf </a></td></tr>
+</table>
+        </div>
+        <h3>Supervised learning</h3>
+        <div>
+        <!-- anchor0009 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Supervised learning results <br><br> Out-of-bag analysis (oob) </td></tr>
+<tr><td> Summary (Year) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Year/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Year) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Year/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Year) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Year/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Year) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Year/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Year) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Year/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Site) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Site/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Site) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Site/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Site) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Site/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Site) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Site/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Site) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Site/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Treat) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Treat/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Treat) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Treat/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Treat) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Treat/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Treat) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Treat/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Treat) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Treat/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Rep) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Rep/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Rep) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Rep/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Rep) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Rep/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Rep) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Rep/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Rep) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/Rep/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (TSDel) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/TSDel/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (TSDel) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/TSDel/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (TSDel) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/TSDel/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (TSDel) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/TSDel/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (TSDel) </td><td> <a href="./DESeq2_normalized_output/SupervisedLearning/TSDel/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Biplots</h3>
+        <div>
+        <!-- anchor0010 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Biplots -- DESeq2 NORMALIZED DATA </td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (bray_curtis) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/biplots/bray_curtis/DESeq2_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (chord) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/biplots/chord/DESeq2_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (hellinger) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/biplots/hellinger/DESeq2_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (kulczynski) </td><td> <a href="./DESeq2_normalized_output/beta_diversity/biplots/kulczynski/DESeq2_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+</table>
+        </div>
+      </div>
+
+      <h2>Rarefied analyis results (QIIME output):</h2>
+      <div id="result3" data-collapse="accordion persist">
+        <h3>Taxonomic plots</h3>
+        <div>
+        <!-- anchor11 -->
+        </div>
+        <h3>Alpha diversity</h3>
+        <div>
+        <!-- anchor12 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Alpha diversity results <br><br> Rarefaction depth: 7,660 </td></tr>
+<tr><td> Alpha rarefaction plots </td><td> <a href="./Alpha_diversity_max7,660/alpha_rarefaction_plots/rarefaction_plots.html" target="_blank"> rarefaction_plots.html </a></td></tr>
+<tr><td> Alpha diversity statistics (Year, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Year_stats.txt" target="_blank"> Year_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Year, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Year_boxplots.pdf" target="_blank"> Year_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Year, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Year_stats.txt" target="_blank"> Year_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Year, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Year_boxplots.pdf" target="_blank"> Year_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Year, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Year_stats.txt" target="_blank"> Year_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Year, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Year_boxplots.pdf" target="_blank"> Year_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Year, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Year_stats.txt" target="_blank"> Year_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Year, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Year_boxplots.pdf" target="_blank"> Year_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Year, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Year_stats.txt" target="_blank"> Year_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Year, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Year_boxplots.pdf" target="_blank"> Year_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Year, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Year_stats.txt" target="_blank"> Year_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Year, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Year_boxplots.pdf" target="_blank"> Year_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Site, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Site_stats.txt" target="_blank"> Site_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Site, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Site_boxplots.pdf" target="_blank"> Site_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Site, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Site_stats.txt" target="_blank"> Site_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Site, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Site_boxplots.pdf" target="_blank"> Site_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Site, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Site_stats.txt" target="_blank"> Site_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Site, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Site_boxplots.pdf" target="_blank"> Site_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Site, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Site_stats.txt" target="_blank"> Site_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Site, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Site_boxplots.pdf" target="_blank"> Site_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Site, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Site_stats.txt" target="_blank"> Site_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Site, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Site_boxplots.pdf" target="_blank"> Site_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Site, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Site_stats.txt" target="_blank"> Site_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Site, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Site_boxplots.pdf" target="_blank"> Site_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Treat, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Treat_stats.txt" target="_blank"> Treat_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Treat, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Treat_boxplots.pdf" target="_blank"> Treat_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Treat, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Treat_stats.txt" target="_blank"> Treat_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Treat, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Treat_boxplots.pdf" target="_blank"> Treat_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Treat, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Treat_stats.txt" target="_blank"> Treat_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Treat, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Treat_boxplots.pdf" target="_blank"> Treat_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Treat, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Treat_stats.txt" target="_blank"> Treat_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Treat, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Treat_boxplots.pdf" target="_blank"> Treat_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Treat, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Treat_stats.txt" target="_blank"> Treat_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Treat, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Treat_boxplots.pdf" target="_blank"> Treat_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Treat, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Treat_stats.txt" target="_blank"> Treat_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Treat, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Treat_boxplots.pdf" target="_blank"> Treat_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Rep, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Rep_stats.txt" target="_blank"> Rep_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Rep, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/Rep_boxplots.pdf" target="_blank"> Rep_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Rep, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Rep_stats.txt" target="_blank"> Rep_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Rep, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/Rep_boxplots.pdf" target="_blank"> Rep_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Rep, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Rep_stats.txt" target="_blank"> Rep_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Rep, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/Rep_boxplots.pdf" target="_blank"> Rep_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Rep, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Rep_stats.txt" target="_blank"> Rep_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Rep, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/Rep_boxplots.pdf" target="_blank"> Rep_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Rep, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Rep_stats.txt" target="_blank"> Rep_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Rep, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/Rep_boxplots.pdf" target="_blank"> Rep_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (Rep, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Rep_stats.txt" target="_blank"> Rep_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (Rep, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/Rep_boxplots.pdf" target="_blank"> Rep_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (TSDel, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/TSDel_stats.txt" target="_blank"> TSDel_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (TSDel, chao1, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_parametric/TSDel_boxplots.pdf" target="_blank"> TSDel_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (TSDel, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/TSDel_stats.txt" target="_blank"> TSDel_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (TSDel, chao1, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_chao1_nonparametric/TSDel_boxplots.pdf" target="_blank"> TSDel_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (TSDel, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/TSDel_stats.txt" target="_blank"> TSDel_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (TSDel, observed_species, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_parametric/TSDel_boxplots.pdf" target="_blank"> TSDel_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (TSDel, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/TSDel_stats.txt" target="_blank"> TSDel_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (TSDel, observed_species, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_observed_species_nonparametric/TSDel_boxplots.pdf" target="_blank"> TSDel_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (TSDel, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/TSDel_stats.txt" target="_blank"> TSDel_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (TSDel, shannon, parametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_parametric/TSDel_boxplots.pdf" target="_blank"> TSDel_boxplots.pdf </a></td></tr>
+<tr><td> Alpha diversity statistics (TSDel, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/TSDel_stats.txt" target="_blank"> TSDel_stats.txt </a></td></tr>
+<tr><td> Alpha diversity boxplots (TSDel, shannon, nonparametric) </td><td> <a href="./Alpha_diversity_max7,660/compare_shannon_nonparametric/TSDel_boxplots.pdf" target="_blank"> TSDel_boxplots.pdf </a></td></tr>
+</table>
+        </div>
+        <h3>Beta diversity</h3>
+        <div>
+        <!-- anchor13 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Beta diversity comparisons (rarefied) </td></tr>
+<tr><td> Anosim results (rarefied) </td><td> <a href="./Rarefied_output/beta_diversity/anosim_results_collated.txt" target="_blank"> anosim_results_collated.txt -- RAREFIED DATA </a></td></tr>
+<tr><td> Adonis results (rarefied) </td><td> <a href="./Rarefied_output/beta_diversity/adonis_results_collated.txt" target="_blank"> adonis_results_collated.txt -- RAREFIED DATA </a></td></tr>
+<tr><td> DB-RDA results (rarefied) </td><td> <a href="./Rarefied_output/beta_diversity/dbrda_results_collated.txt" target="_blank"> dbrda_results_collated.txt -- RAREFIED DATA </a></td></tr>
+<tr><td> Permanova results (rarefied) </td><td> <a href="./Rarefied_output/beta_diversity/permanova_results_collated.txt" target="_blank"> permanova_results_collated.txt -- RAREFIED DATA </a></td></tr>
+<tr><td> Permdisp results (rarefied) </td><td> <a href="./Rarefied_output/beta_diversity/permdisp_results_collated.txt" target="_blank"> permdisp_results_collated.txt -- RAREFIED DATA </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> bray_curtis </td></tr>
+<tr><td> Distance boxplots (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/2D_PCoA_bdiv_plots/bray_curtis_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (bray_curtis, 0.13492304050112588) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot.pdf </a></td></tr>
+<tr><td> Distance matrix (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_dm.txt" target="_blank"> bray_curtis_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_pc.txt" target="_blank"> bray_curtis_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/bray_curtis_nmds.txt" target="_blank"> bray_curtis_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> chord </td></tr>
+<tr><td> Distance boxplots (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (chord) </td><td> <a href="./Rarefied_output/beta_diversity/2D_PCoA_bdiv_plots/chord_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (chord, 0.1266506579601609) </td><td> <a href="./Rarefied_output/beta_diversity/chord_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (chord) </td><td> <a href="./Rarefied_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot.pdf </a></td></tr>
+<tr><td> Distance matrix (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_dm.txt" target="_blank"> chord_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_pc.txt" target="_blank"> chord_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (chord) </td><td> <a href="./Rarefied_output/beta_diversity/chord_nmds.txt" target="_blank"> chord_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> hellinger </td></tr>
+<tr><td> Distance boxplots (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/2D_PCoA_bdiv_plots/hellinger_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (hellinger, 0.13425614494601074) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot.pdf </a></td></tr>
+<tr><td> Distance matrix (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_dm.txt" target="_blank"> hellinger_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_pc.txt" target="_blank"> hellinger_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/hellinger_nmds.txt" target="_blank"> hellinger_nmds.txt </a></td></tr>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> kulczynski </td></tr>
+<tr><td> Distance boxplots (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Year_Distances.pdf" target="_blank"> Year_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Year_Stats.txt" target="_blank"> Year_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Site_Distances.pdf" target="_blank"> Site_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Site_Stats.txt" target="_blank"> Site_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Treat_Distances.pdf" target="_blank"> Treat_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Treat_Stats.txt" target="_blank"> Treat_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Rep_Distances.pdf" target="_blank"> Rep_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/Rep_Stats.txt" target="_blank"> Rep_Stats.txt </a></td></tr>
+<tr><td> Distance boxplots (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/TSDel_Distances.pdf" target="_blank"> TSDel_Distances.pdf </a></td></tr>
+<tr><td> Distance boxplots statistics (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_boxplots/TSDel_Stats.txt" target="_blank"> TSDel_Stats.txt </a></td></tr>
+<tr><td> 3D PCoA plot (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_emperor_pcoa_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 2D PCoA plot (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/2D_PCoA_bdiv_plots/kulczynski_pc_2D_PCoA_plots.html" target="_blank"> index.html </a></td></tr>
+<tr><td> 3D NMDS plot (kulczynski, 0.13492304050112588) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_emperor_nmds_plot/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> DB-RDA plot (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/dbrda_out/" target="_blank"> dbrda_plot.pdf </a></td></tr>
+<tr><td> Distance matrix (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_dm.txt" target="_blank"> kulczynski_dm.txt </a></td></tr>
+<tr><td> Principal coordinate matrix (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_pc.txt" target="_blank"> kulczynski_pc.txt </a></td></tr>
+<tr><td> NMDS coordinates (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/kulczynski_nmds.txt" target="_blank"> kulczynski_nmds.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Group significance (Kruskal-Wallis from QIIME)</h3>
+        <div>
+        <!-- anchor14 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (Kruskal-Wallis - nonparametric ANOVA) <br><br> All mean values are percent of total counts by sample (relative OTU abundances) </td></tr>
+</table>
+        </div>
+	<h3>Group significance (ANCOM from ancom.R via akutils)</h3>
+        <div>
+        <!-- anchor714 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (ANCOM - Analysis of Composition of Microbiomes - alpha = 0.05) <br><br> ANCOM tends to fail when there are few OTUs or taxa considered (such as L2 tables) </td></tr>
+</table>
+        </div>
+	<h3>Group significance (Indicator Species from indicspecies via akutils)</h3>
+        <div>
+        <!-- anchor814 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Group Significance Results (Indicator species analysis - 9999 permutations) <br></td></tr>
+</table>
+        </div>
+        <h3>Rank abundance</h3>
+        <div>
+        <!-- anchor15 -->
+<table class="center" border=1>
+<tr><td> Rank abundance (xlog-ylog) </td><td> <a href="./Rarefied_output/RankAbundance/rankabund_xlog-ylog.pdf" target="_blank"> rankabund_xlog-ylog.pdf </a></td></tr>
+<tr><td> Rank abundance (xlinear-ylog) </td><td> <a href="./Rarefied_output/RankAbundance/rankabund_xlinear-ylog.pdf" target="_blank"> rankabund_xlinear-ylog.pdf </a></td></tr>
+<tr><td> Rank abundance (xlog-ylinear) </td><td> <a href="./Rarefied_output/RankAbundance/rankabund_xlog-ylinear.pdf" target="_blank"> rankabund_xlog-ylinear.pdf </a></td></tr>
+<tr><td> Rank abundance (xlinear-ylinear) </td><td> <a href="./Rarefied_output/RankAbundance/rankabund_xlinear-ylinear.pdf" target="_blank"> rankabund_xlinear-ylinear.pdf </a></td></tr>
+</table>
+        </div>
+        <h3>Supervised learning</h3>
+        <div>
+        <!-- anchor16 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Supervised learning results <br><br> Out-of-bag analysis (oob) </td></tr>
+<tr><td> Summary (Year) </td><td> <a href="./Rarefied_output/SupervisedLearning/Year/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Year) </td><td> <a href="./Rarefied_output/SupervisedLearning/Year/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Year) </td><td> <a href="./Rarefied_output/SupervisedLearning/Year/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Year) </td><td> <a href="./Rarefied_output/SupervisedLearning/Year/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Year) </td><td> <a href="./Rarefied_output/SupervisedLearning/Year/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Site) </td><td> <a href="./Rarefied_output/SupervisedLearning/Site/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Site) </td><td> <a href="./Rarefied_output/SupervisedLearning/Site/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Site) </td><td> <a href="./Rarefied_output/SupervisedLearning/Site/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Site) </td><td> <a href="./Rarefied_output/SupervisedLearning/Site/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Site) </td><td> <a href="./Rarefied_output/SupervisedLearning/Site/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Treat) </td><td> <a href="./Rarefied_output/SupervisedLearning/Treat/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Treat) </td><td> <a href="./Rarefied_output/SupervisedLearning/Treat/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Treat) </td><td> <a href="./Rarefied_output/SupervisedLearning/Treat/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Treat) </td><td> <a href="./Rarefied_output/SupervisedLearning/Treat/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Treat) </td><td> <a href="./Rarefied_output/SupervisedLearning/Treat/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (Rep) </td><td> <a href="./Rarefied_output/SupervisedLearning/Rep/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (Rep) </td><td> <a href="./Rarefied_output/SupervisedLearning/Rep/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (Rep) </td><td> <a href="./Rarefied_output/SupervisedLearning/Rep/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (Rep) </td><td> <a href="./Rarefied_output/SupervisedLearning/Rep/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (Rep) </td><td> <a href="./Rarefied_output/SupervisedLearning/Rep/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+<tr><td> Summary (TSDel) </td><td> <a href="./Rarefied_output/SupervisedLearning/TSDel/summary.txt" target="_blank"> summary.txt </a></td></tr>
+<tr><td> Mislabeling (TSDel) </td><td> <a href="./Rarefied_output/SupervisedLearning/TSDel/mislabeling.txt" target="_blank"> mislabeling.txt </a></td></tr>
+<tr><td> Confusion Matrix (TSDel) </td><td> <a href="./Rarefied_output/SupervisedLearning/TSDel/confusion_matrix.txt" target="_blank"> confusion_matrix.txt </a></td></tr>
+<tr><td> CV Probabilities (TSDel) </td><td> <a href="./Rarefied_output/SupervisedLearning/TSDel/cv_probabilities.txt" target="_blank"> cv_probabilities.txt </a></td></tr>
+<tr><td> Feature Importance Scores (TSDel) </td><td> <a href="./Rarefied_output/SupervisedLearning/TSDel/feature_importance_scores.txt" target="_blank"> feature_importance_scores.txt </a></td></tr>
+</table>
+        </div>
+        <h3>Biplots</h3>
+        <div>
+        <!-- anchor17 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Biplots -- RAREFIED DATA </td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (bray_curtis) </td><td> <a href="./Rarefied_output/beta_diversity/biplots/bray_curtis/rarefied_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (chord) </td><td> <a href="./Rarefied_output/beta_diversity/biplots/chord/rarefied_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (hellinger) </td><td> <a href="./Rarefied_output/beta_diversity/biplots/hellinger/rarefied_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+<tr><td> PCoA biplot, log_pick_otus_20180802_0905AM.txt map_SSU_Salvage_qiimeformat.txt map_SSU_Salvage_qiimeformat.txt~ parameter_file.txt prefix100_suffix0 split_libraries swarm_otus_d4 (kulczynski) </td><td> <a href="./Rarefied_output/beta_diversity/biplots/kulczynski/rarefied_table_sorted_*/index.html" target="_blank"> index.html </a></td></tr>
+</table>
+        </div>
+      </div>
+
+      <h2>Additional graphics (Phyloseq output):</h2>
+      <div id="result4" data-collapse="accordion persist">
+        <h3>Phylogenetic tree plots</h3>
+        <div>
+        <!-- anchor20 -->
+        </div>
+        <h3>Network plots (using CSS-normalized table)</h3>
+        <div>
+        <!-- anchor21 -->
+<table class="center" border=1>
+<tr colspan=2 align=center bgcolor=#e8e8e8><td colspan=2 align=center> Network plots by category <br><br> Networks based on Bray-Curtis dissimilarity with 90% maximum distance </td></tr>
+<tr><td> Network plot (colored by Year) </td><td> <a href="./Phyloseq_output/Networks/Year_network.pdf" target="_blank"> Year_network.pdf </a></td></tr>
+<tr><td> Network plot (colored by Site) </td><td> <a href="./Phyloseq_output/Networks/Site_network.pdf" target="_blank"> Site_network.pdf </a></td></tr>
+<tr><td> Network plot (colored by Treat) </td><td> <a href="./Phyloseq_output/Networks/Treat_network.pdf" target="_blank"> Treat_network.pdf </a></td></tr>
+<tr><td> Network plot (colored by Rep) </td><td> <a href="./Phyloseq_output/Networks/Rep_network.pdf" target="_blank"> Rep_network.pdf </a></td></tr>
+<tr><td> Network plot (colored by TSDel) </td><td> <a href="./Phyloseq_output/Networks/TSDel_network.pdf" target="_blank"> TSDel_network.pdf </a></td></tr>
+</table>
+        </div>
+      </div>
+
+      <script>
+        new jQueryCollapse($("#result1"), {
+          open: function() {
+            this.slideDown(100);
+          },
+          close: function() {
+            this.slideUp(100);
+          }
+        });
+        new jQueryCollapse($("#result2"), {
+          open: function() {
+            this.slideDown(100);
+          },
+          close: function() {
+            this.slideUp(100);
+          }
+        });
+        new jQueryCollapse($("#result3"), {
+          open: function() {
+            this.slideDown(100);
+          },
+          close: function() {
+            this.slideUp(100);
+          }
+        });
+        new jQueryCollapse($("#result4"), {
+          open: function() {
+            this.slideDown(100);
+          },
+          close: function() {
+            this.slideUp(100);
+          }
+        });
+        new jQueryCollapse($("#result5"), {
+          open: function() {
+            this.slideDown(100);
+          },
+          close: function() {
+            this.slideUp(100);
+          }
+        });
+      </script>
+    </div>
+  </body>
+<br>
+<br>
+<hr>
+</html>
