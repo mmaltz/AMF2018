@@ -1,8 +1,10 @@
 ---
 title: "AMF"
 author: "C. Nell"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: html_document
+date: '`r format(Sys.time(), ''%d %B, %Y'')`'
+output:
+  html_document: default
+  pdf_document: default
 ---  
 
 ###Questions:
@@ -188,16 +190,16 @@ str(ssuguildRICH)
 str(ssuguildREAD)
 ```
 ```{r glm on Rhizophilic richness and metadata}
-
 y<-ssuguildRICH$Rhizophilic_Richness
 str(y)
-D<-ssuguildRICH$Description.x
-S<-ssuguildRICH$Site.x
+D<-ssuguildRICH$Description
+S<-ssuguildRICH$Site
+
 length(S)
 length(D)
 ?lm
-lm(y~D)
-SRhizRich<-lm(y~S)
+#lm(y~D)
+SRhizRich<-lm(y ~ S)
 str(SRhizRich)
 
 DRhizRich<-lm(y~D)
@@ -210,8 +212,8 @@ summary(DSRhizRich)
 
 y<-ssuguildRICH$Rhizophilic_Richness
 str(y)
-D<-ssuguildRICH$Description.x
-S<-ssuguildRICH$Site.x
+D<-ssuguildRICH$Description
+S<-ssuguildRICH$Site
 length(S)
 length(D)
 ?lm
@@ -231,7 +233,7 @@ summary(DSRhizRich)
 lm(y~D*S)
 lm(y~D+S)
 ?glm
-glm(y=~x)
+glm(y ~ D)
 
  #Description+Site
 
@@ -243,7 +245,7 @@ glm(y=~x)
 **Does not apply below**  
 
 Separating data by root and soil
-```{r, eval=FALSE}
+```{r, eval=FALSE, include=FALSE}
 ## issue
 ## TYPE does not exist in data
 
@@ -258,7 +260,7 @@ ssusoil.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == 
 
 ```
 Pull out roots and soil for Family DFs
-```{r, eval=FALSE}
+```{r, include=FALSE, eval=FALSE}
 ssufamroot<-subset.data.frame(ssufamily,TYPE == "ROOT")
 names(ssufamroot)[names(ssufamroot)=="ssufamily"]<-"Family"
 ssufamsoil<-subset.data.frame(ssufamily,TYPE == "SOIL")

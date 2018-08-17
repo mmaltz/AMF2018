@@ -1,0 +1,6 @@
+base
+dplyr
+reshape2
+data.table
+stringr
+bindrcpp
