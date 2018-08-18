@@ -1,7 +1,7 @@
 ---
 title: "AMF"
 author: "C. Nell"
-date: '`r format(Sys.time(), ''%d %B, %Y'')`'
+date: '20180817'
 output:
   html_document: default
   pdf_document: default
@@ -17,10 +17,10 @@ knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message
 ```
 Load Required Packages
 ```{r}
-#library(tidyverse)
+library(tidyverse)
 library(dplyr)
 library(reshape2)
-#library(ggplot2)
+library(ggplot2)
 library(data.table)
 library(stringr)
 
@@ -271,7 +271,6 @@ names(ssufamsoil)[names(ssufamsoil)=="ssufamily"]<-"Family"
 Plotting  
 **start '2017_16_07_SSU_Boxplots.R'** 
 ```{r}
-
 #richness
 plot.df<-ssuguildREADRICH
 str(plot.df)

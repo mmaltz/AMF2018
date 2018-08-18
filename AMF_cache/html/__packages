@@ -11,3 +11,10 @@ forcats
 reshape2
 data.table
 bindrcpp
+readxl
+permute
+lattice
+vegan
+magrittr
+cowplot
+formatR
