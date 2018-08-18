@@ -298,4 +298,23 @@ reachbox
 reachbox <-reachbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 reachbox
 
+<<<<<<< HEAD
 ```
+=======
+```
+#Working on examining other variables 
+```{r}
+#richness
+plot.df<-ssuguildREADRICH
+str(plot.df)
+
+richbox <- ggplot(plot.df, aes(x = Functional.Group , y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+richbox
+
+richbox <- richbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Richness")    
+richbox
+
+richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
+richbox
+```
+>>>>>>> EditingAMF
