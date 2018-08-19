@@ -1,0 +1,148 @@
+#To run the multivariate stats on files that are generated from the workflow adapted from 2017-07-07_Chapter_2_SSU_IntialClean
+for running statistical analyses, as was commonly generated through workflows for dustMS or earlier analyses with Acid or Ozone.
+Such as:
+#### Permanova  
+Permanova tests for differences in composition among groups and always based on pairwise distances/dissimilarities.  
+We are using bray curtis now, instead of unifrac. How to adjust code to use bray instead of unifrac. Are there implications?
+
+In dustms.Rmd we ran scripts to generate comm.mat and grps, such as which were able to be analysed with similar scripts:
+
+  ```{r other dist permanova, eval=FALSE, include=FALSE}
+  ## are the results the same with other (non evolutionary) dissimiarlity indices?
+  dist.j<-vegdist(otu.comm[,-1], method='jaccard', na.rm=TRUE)
+  dist.bc<-vegdist(otu.comm[,-1], method='bray', na.rm=TRUE)
+
+  ad.bc<-adonis2(dist.bc~Site+Year+Description, data=grps, permutations=1000)
+  ad.bc
+
+  ad.j<-adonis2(dist.j~Site+Year+Description, data=grps, permutations=1000)
+  ad.j
+
+  ```{r unifrac permanova}
+  set.seed(304)
+  #unifrac distances
+  str(grps) #look at data types to indetify error source
+  # Year is integer - change to factor 
+  grps$Year<-as.factor(grps$Year)
+
+  ad.uni<-adonis2(unifrac~Site+Description, data=grps, permutations=1000, strata='Year')
+
+  ad.uni<-adonis2(unifrac~Site+Description+Year, data=grps, permutations=1000)
+  ad.uni
+
+  #unifrac distances with Site nested in Description
+  ad.uniNest<-adonis2(unifrac~Description/Site+Year, data=grps, permutations=1000)
+  ad.uniNest
+
+  ``` 
+#not adjusted
+  #### NMDS  
+  The NMDS often pairs well with the PERMANOVA because both are more robust to properties of community data. To gain proper fit may need to try multiple dissimilarity methods or tranformations.   
+  ```{r configure nmds, echo=FALSE}
+  #metaMDS can take communty data or dissimilarities
+  mds.uni<-metaMDS(unifrac, k=2, autotransform=FALSE)
+  mds.uniwt<-metaMDS(unifrac_wt, k=2, autotransform=FALSE)
+
+  #stressplot(mds.uni)
+  #stressplot(mds.uniwt)
+
+  ## both have good stress(below .15)
+  ```
+  Plot ordination  
+  ```{r nmds plot df}
+  # get NMDS scores for each SampleID
+  # scores are returned for each sampleid as a row, collapses dissimilarity data into 2 dimensions
+  nmds.uni<-data.frame(scores(mds.uni))
+  nmds.uni<-nmds.uni[match(grps$SampleID,rownames(nmds.uni)),]%>%cbind(grps) # match the rows and bind with the grouping data for plotting
+
+  # plotting data for nmds for weighted unifrac
+  nmds.uniwt<-data.frame(scores(mds.uniwt))
+  nmds.uniwt<-nmds.uniwt[match(grps$SampleID,rownames(nmds.uniwt)),]%>%cbind(grps) # reorder rows and bind to grouping data
+  ```
+  ```{r plot nmds}
+  ggplot(nmds.uni, aes(NMDS1, NMDS2))+
+  geom_point(aes(color=Elevation, shape=Month))
+  ```
+
+#This is the AMFSalvage Logic/Questions/Output text
+---
+title: "AMF"
+author: "C. Nell"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---  
+<<<<<<< HEAD
+
+###Questions:
+  ###**Q1: Propagule determination: Do AM fungal communities resemble the donor site, irregardless of where soil was delivered?
+    ####Outputs
+      ####1. Determine the similarity of AMF communities at each recipient site to the donor site, from where topsoils originated from. Generate a heatmap with distances, to visually determine - which sites/samples are more similar to each other, 
+    ####2. Determine the similarity of AMF communities to the donor site, from where topsoils originated from; - which sites/samples are most similar to the composition of the donor site.
+  
+###**Q2: Environmental filtering: Do AM fungal communities resemble the recipient sites, and are more dissimilar to the donor sites
+#### Q3: Propagule pressure: Do AM fungal communities resemble the donor site more in thicker topsoil layer treatments than they do in the control or dusted sites?
+
+=======
+>>>>>>> EditingAMF
+```{r, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
+```
+Load Required Packages
+```{r}
+library(tidyverse)
+library(dplyr) ## for data wrangling - %>% function
+library(reshape2)  ##melt and cast data
+library(ggplot2) # plotting
+library(data.table)
+library(stringr)
+library(tidyr) # 'separate' function
+library(readxl) #read xlsx files into r on mac computer
+library(vegan) # dissimilarity matrix, permanova functions
+library(magrittr)
+library(cowplot)
+library(formatR)
+
+
+date<-format(Sys.time(), '%Y%b%d')
+date
+
+```
+### Logic   
+  Salvage topsoil was removed from a donor site and delivered to three recipient sites in 2015. We sampled all sites (Donor and recipients) prior to topsoil delivery and sequenced AM Fungi from all sites in 2015 and 2017 from manipulative plots, set up in a randomized block design at each site with: control treatments (no topsoil added), a dusting of topsoil, and three levels of topsoil thicknesses (2", 4" and 6" thick layers of this topsoil, originating from the donor site)), delivered to all recipient sites).
+  
+### Questions:
+###**Q1: 
+  Propagule determination: Do AM fungal communities resemble the donor site, regardless of where soil was delivered? Is provenance a driver of AM fungal community composition?
+
+###**Q2: 
+  Environmental filtering: Do AM fungal communities resemble the recipient sites, and are more dissimilar to the AM fungal communities from the donor site?
+
+###**Q3: 
+  Propagule pressure: Do AM fungal communities resemble the donor site more in higher level topsoil treatments, than they do in the control or dusted sites?
+
+####**Outputs:** 
+
+#Analysis of similarity:
+
+  Determine the similarity of AMF communities at each recipient site to the donor site, from where topsoils originated from. 
+    Generate heatmaps with distances, to visually determine - which sites/samples are more similar to each other, and which are more dissimilar. 
+    Generate NMDS / Pcoa, plotted with Year as shapes and Sites as colors, and Description as ...?
+    Run permanova
+      Do AM fungal communities at each site resemble the recipient sites, and are they more dissimilar to the donor sites?
+      
+#Functional group richness:
+
+  Determine the richness of AMF functional groups in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment)
+  
+#Taxonomic diversity:
+
+  Determine the OTU taxa richness (alpha diversity) of AMF communities in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment).
+  Determine the beta diversity of AMF communities in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment).
+  
+#Topsoil level treatments
+
+  Propagule pressure: Do AM fungal communities resemble the donor site more in thicker topsoil layer treatments than they do in the control or dusted sites?
+  Are the sites with Treat groups = S, more similar to the donor site than F, and are treatment groups S and F more similar to the donor site than T? Is this relationship clinal, with S being the thickest and most similar to donor site, followed by F, and then by T.
+  TO FIGURE OUT - how to address this question statistically??multiple regression with Treat on the X and similarity to Donor Site on the Y?? A permanova with multiple comparisons?
+  
+```
