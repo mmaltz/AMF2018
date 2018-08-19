@@ -298,6 +298,9 @@ reachbox
 reachbox <-reachbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 reachbox
 
+<<<<<<< HEAD
+```
+=======
 ```
 #Working on examining other variables 
 ```{r}
@@ -314,3 +317,4 @@ richbox
 richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 richbox
 ```
+>>>>>>> EditingAMF

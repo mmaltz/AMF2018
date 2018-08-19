@@ -10,6 +10,10 @@ stringr
 forcats
 reshape2
 data.table
+<<<<<<< HEAD
+bindrcpp
+=======
+>>>>>>> EditingAMF
 readxl
 permute
 lattice
@@ -17,4 +21,7 @@ vegan
 magrittr
 cowplot
 formatR
+<<<<<<< HEAD
+=======
 bindrcpp
+>>>>>>> EditingAMF
