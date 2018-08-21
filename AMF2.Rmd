@@ -209,6 +209,7 @@ str(ssuguildREADRICHlong)
 
 Functional group read and richness separate 
 ```{r}
+
 ssuguildREAD <- ssul %>% 
   group_by(ID) %>%
   summarise(Ancestral_Read_Abundance = sum(ssureads[Functional.Group == "Ancestral"]),
@@ -225,11 +226,14 @@ ssuguildRICH<- ssul %>%
 head(ssuguildRICH)
 ```
 Add metadata to above 
+#Everytime I run this the output is different, sometime it merges the data with the metadata with two copies of the metadata (e.g., Site.x and Site.y)
+#To address this, DON'T RUN NEXT CHUNK WITHOUT RERUNNING THE PREVIOUS CHUNK GENERATING THE ORIGINAL ssuguildRICH FILE, WITHOUT THE METADATA, tried to use "all.y = FALSE" after merge(ssuguildRICH, metassu, by="ID",""
 ```{r}
-ssuguildRICH<-merge(ssuguildRICH, metassu, by="ID")
-ssuguildREAD<-merge(ssuguildREAD, metassu, by="ID")
+ssuguildRICH<-merge(ssuguildRICH, metassu, by="ID", all.y = FALSE)
+ssuguildREAD<-merge(ssuguildREAD, metassu, by="ID", all.y = FALSE)
 str(ssuguildRICH)
 str(ssuguildREAD)
+View(ssuguildREAD)
 ```
 Examining the statistic support for increased rhizophilic richness in recipientpost plots
 ```{r glm on Rhizophilic richness and metadata}
@@ -300,10 +304,10 @@ richbox
 ```  
 ```{r, eval=FALSE}
 ##reads
-plot.read<-ssuguildREAD
+plot.read<-ssuguildREADRICH
 str(plot.read)
 
-reachbox <- ggplot(plot.read, aes(x = Functional.Group, y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description.x)) 
+reachbox <- ggplot(plot.read, aes(x = Functional.Group, y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
 reachbox
 
 reachbox <- reachbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Reads")    
@@ -311,14 +315,12 @@ reachbox
 
 reachbox <-reachbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 reachbox
-
-<<<<<<< HEAD
 ```
 
 ```
 #Working on examining other variables 
+
 ```{r}
-#richness
 plot.df<-ssuguildREADRICH
 str(plot.df)
 
@@ -330,5 +332,5 @@ richbox
 
 richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 richbox
+
 ```
->>>>>>> EditingAMF
