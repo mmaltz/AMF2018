@@ -9,7 +9,7 @@ output:
 
 ### Logic   
   Salvage topsoil was removed from a donor site and delivered to three recipient sites in 2015. We sampled all sites (Donor and recipients) prior to topsoil delivery and sequenced AM Fungi from all sites in 2015 and 2017 from manipulative plots, set up in a randomized block design at each site with: control treatments (no topsoil added), a dusting of topsoil, and three levels of topsoil thicknesses (2", 4" and 6" thick layers of this topsoil, originating from the donor site)), delivered to all recipient sites).
-```{r, include=FALSE}
+```{r}
 knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
 ```
 ### Questions:
@@ -351,6 +351,30 @@ qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "pois", lambda = poisson$estimat
 gamma <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma")
 qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma", shape = gamma$estimate[[1]], rate = gamma$estimate[[2]])
 #
+```
+```{r glm gaussian}
+modelingAMF <- glm(OTU_Richness_Sample.t ~ Site + Treat, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
+modelingAMF
+
+stepAIC(modelingAMF) 
+modelingAMFfinal <- glm(OTU_Richness_Sample.t ~ Site + Treat, family = gaussian(link = "identity"), data = ssuguildREADRICHlong)
+
+summary(modelingAMFfinal)
+plot(modelingAMFfinal)
+
+
+```
+```{r modeling }
+
+modelingAMF <- glm(OTU_Richness_Sample.t ~ Site + Treat, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
+modelingAMF
+
+stepAIC(modelingAMF) 
+modelingAMFfinal <- glm(OTU_Richness_Sample.t ~ Site + Treat, family = gaussian(link = "identity"), data = ssuguildREADRICHlong)
+
+summary(modelingAMFfinal)
+plot(modelingAMFfinal)
+
 ```
 
 

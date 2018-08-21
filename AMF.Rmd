@@ -252,8 +252,8 @@ str(ssuguildREAD)
 
 y<-ssuguildRICH$Rhizophilic_Richness
 str(y)
-D<-ssuguildRICH$Description
-S<-ssuguildRICH$Site
+D<-ssuguildRICH$Description.x
+S<-ssuguildRICH$Site.x
 
 length(S)
 length(D)
@@ -272,8 +272,8 @@ summary(DSRhizRich)
 
 y<-ssuguildRICH$Rhizophilic_Richness
 str(y)
-D<-ssuguildRICH$Description
-S<-ssuguildRICH$Site
+D<-ssuguildRICH$Description.x
+S<-ssuguildRICH$Site.x
 length(S)
 length(D)
 ?lm
