@@ -231,6 +231,7 @@ ssuguildREAD<-merge(ssuguildREAD, metassu, by="ID")
 str(ssuguildRICH)
 str(ssuguildREAD)
 ```
+Examining the statistic support for increased rhizophilic richness in recipientpost plots
 ```{r glm on Rhizophilic richness and metadata}
 y<-ssuguildRICH$Rhizophilic_Richness
 str(y)
@@ -241,8 +242,9 @@ length(S)
 length(D)
 ?lm
 #lm(y~D)
-SRhizRich<-lm(y ~ S)
 str(SRhizRich)
+SRhizRich<-lm(y ~ S)
+
 
 DRhizRich<-lm(y~D)
 str(DRhizRich)
@@ -280,38 +282,8 @@ glm(y ~ D)
  #Description+Site
 
 ```
-
-
-
-
-**Does not apply below**  
-
-Separating data by root and soil
-```{r, eval=FALSE, include=FALSE}
-## issue
-## TYPE does not exist in data
-
-# root
-ssuroot.readreach<-subset(ssuguildREADRICH,ssuguildREADRICH$TYPE == "ROOT")
-ssuguildREADRICHlong<-merge(ssuguildREADRICHlong,metassu,by="ID")
-ssuroot.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == "ROOT")
-#soil
-ssusoil.readreach<-subset(ssuguildREADRICH,ssuguildREADRICH$TYPE == "SOIL")
-ssuguildREADRICHlong<-merge(ssuguildREADRICHlong,metassu,by="ID")
-ssusoil.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == "SOIL")
-
-```
-Pull out roots and soil for Family DFs
-```{r, include=FALSE, eval=FALSE}
-ssufamroot<-subset.data.frame(ssufamily,TYPE == "ROOT")
-names(ssufamroot)[names(ssufamroot)=="ssufamily"]<-"Family"
-ssufamsoil<-subset.data.frame(ssufamily,TYPE == "SOIL")
-names(ssufamsoil)[names(ssufamsoil)=="ssufamily"]<-"Family"
-```
-
-
-Plotting  
 **start '2017_16_07_SSU_Boxplots.R'** 
+Plotting
 ```{r}
 #richness
 plot.df<-ssuguildREADRICH
@@ -331,7 +303,7 @@ richbox
 plot.read<-ssuguildREAD
 str(plot.read)
 
-#reachbox <- ggplot(plot.read, aes(x = Functional.Group , y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+reachbox <- ggplot(plot.read, aes(x = Functional.Group, y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description.x)) 
 reachbox
 
 reachbox <- reachbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Reads")    
@@ -342,7 +314,7 @@ reachbox
 
 <<<<<<< HEAD
 ```
-=======
+
 ```
 #Working on examining other variables 
 ```{r}

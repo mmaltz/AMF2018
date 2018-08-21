@@ -11,3 +11,10 @@ tidyr
 readr
 purrr
 forcats
+readxl
+permute
+lattice
+vegan
+magrittr
+cowplot
+formatR
