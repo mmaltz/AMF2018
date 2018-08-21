@@ -54,11 +54,18 @@ knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message
 Load Required Packages
 ```{r}
 library(tidyverse)
-library(dplyr)
-library(reshape2)
-library(ggplot2)
+library(dplyr) ## for data wrangling - %>% function
+library(reshape2)  ##melt and cast data
+library(ggplot2) # plotting
 library(data.table)
 library(stringr)
+library(tidyr) # 'separate' function
+library(readxl) #read xlsx files into r on mac computer
+library(vegan) # dissimilarity matrix, permanova functions
+library(magrittr)
+library(cowplot)
+library(formatR)
+
 
 date<-format(Sys.time(), '%Y%b%d')
 date
