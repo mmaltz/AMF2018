@@ -9,7 +9,9 @@ output:
 
 ### Logic   
   Salvage topsoil was removed from a donor site and delivered to three recipient sites in 2015. We sampled all sites (Donor and recipients) prior to topsoil delivery and sequenced AM Fungi from all sites in 2015 and 2017 from manipulative plots, set up in a randomized block design at each site with: control treatments (no topsoil added), a dusting of topsoil, and three levels of topsoil thicknesses (2", 4" and 6" thick layers of this topsoil, originating from the donor site)), delivered to all recipient sites).
-  
+```{r, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
+```
 ### Questions:
 ###**Q1: 
   Propagule determination: Do AM fungal communities resemble the donor site, regardless of where soil was delivered? Is provenance a driver of AM fungal community composition?
@@ -19,7 +21,7 @@ output:
 
 ###**Q3: 
   Propagule pressure: Do AM fungal communities resemble the donor site more in higher level topsoil treatments, than they do in the control or dusted sites?
-
+  
 ####**Outputs:** 
 
 #Analysis of similarity:
@@ -45,10 +47,7 @@ output:
   Are the sites with Treat groups = S, more similar to the donor site than F, and are treatment groups S and F more similar to the donor site than T? Is this relationship clinal, with S being the thickest and most similar to donor site, followed by F, and then by T.
   TO FIGURE OUT - how to address this question statistically??multiple regression with Treat on the X and similarity to Donor Site on the Y?? A permanova with multiple comparisons?
   
-```
-
-** the following is adapted from AUthor: Michala Phillips 2017-07-07_Chapter_2_SSU_IntialClean **  
-```{r, include=FALSE}
+```{r}
 knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
 ```
 Load Required Packages
