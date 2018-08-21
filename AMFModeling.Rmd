@@ -83,6 +83,7 @@ str(ssu)
 metassu<-fread('map_SSU_Salvage_qiimeformat.txt', header=TRUE)
 metassu$Year<-as.character(metassu$Year)
 metassu$Rep<-as.factor(metassu$Rep)
+metassu$Treat<-as.factor(metassu$Treat)
 str(metassu)
 ```
 Clean SSU headers  
@@ -119,6 +120,8 @@ ssu  <- ssu[-which(ssu$ssutaxonomy %in% drop),]
 
 ## alternatively, can use filtering to drop these and avoid rewriting things 
 ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blast hit")
+
+ssu <- ssu[complete.cases(ssu),]
 
 ```
 Add in functional groups 
@@ -316,9 +319,47 @@ reachbox
 reachbox <-reachbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 reachbox
 ```
+ADAPTED FROM #GLMM for roots and soil OTU Richness SSU by functional group-modified from "GLM_NAU_6_2017"
+#---different models for each functional group
+#Author: Michala Phillips
+#MODIFY FOR THIS DATA
+```{r}
+library(car)
+require(MASS)
+library(lme4)
+```
+
+#Choose distribution based on data
+# find the right distribution for data
+```{r}
+
+ssuguildREADRICHlong$OTU_Richness_Sample.t <- ssuguildREADRICHlong$OTU_Richness_Sample + 1
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "norm")
+
+#LOGNORMAL
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample, "lnorm")
+
+#NEG BINOMIAL
+nbinom <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "Negative Binomial")
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "nbinom", size = nbinom$estimate[[1]], mu = nbinom$estimate[[2]])
+
+#POISSON
+poisson <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "Poisson")
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "pois", lambda = poisson$estimate)
+
+#GAMMA
+gamma <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma")
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma", shape = gamma$estimate[[1]], rate = gamma$estimate[[2]])
+#
+```
+
+
 
 ```
 #Working on examining other variables 
+```{r}
+modelingAMF <- glm(OTU_Richness_Sample.t ~ TREAT+SITE+Treat:SITE, data = ssuguil, family = gaussian(link = "identity"))
+```
 
 ```{r}
 plot.df<-ssuguildREADRICH
@@ -334,3 +375,14 @@ richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 richbox
 
 ```
+
+ADAPTED FROM #GLMM for roots and soil OTU Richness SSU by functional group-modified from "GLM_NAU_6_2017"
+#---different models for each functional group
+#Author: Michala Phillips
+#MODIFY FOR THIS DATA
+```{r}
+
+
+
+```
+

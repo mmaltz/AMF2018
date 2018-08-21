@@ -1,16 +1,15 @@
 base
-dplyr
-reshape2
-data.table
-stringr
-bindrcpp
 tidyverse
 ggplot2
 tibble
 tidyr
 readr
 purrr
+dplyr
+stringr
 forcats
+reshape2
+data.table
 readxl
 permute
 lattice
@@ -18,3 +17,4 @@ vegan
 magrittr
 cowplot
 formatR
+bindrcpp

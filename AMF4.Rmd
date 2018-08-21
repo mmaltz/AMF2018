@@ -83,6 +83,7 @@ str(ssu)
 metassu<-fread('map_SSU_Salvage_qiimeformat.txt', header=TRUE)
 metassu$Year<-as.character(metassu$Year)
 metassu$Rep<-as.factor(metassu$Rep)
+metassu$Treat<-as.factor(metassu$Treat)
 str(metassu)
 ```
 Clean SSU headers  
@@ -119,6 +120,8 @@ ssu  <- ssu[-which(ssu$ssutaxonomy %in% drop),]
 
 ## alternatively, can use filtering to drop these and avoid rewriting things 
 ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blast hit")
+
+ssu <- ssu[complete.cases(ssu),]
 
 ```
 Add in functional groups 
@@ -334,3 +337,5 @@ richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
 richbox
 
 ```
+
+
