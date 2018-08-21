@@ -1,17 +1,53 @@
 ---
 title: "AMF"
 author: "C. Nell"
-date: '20180817'
+date: '20180821'
 output:
   html_document: default
   pdf_document: default
 ---  
 
-###Questions:
-#### Q1: Propagule determination: Do AM fungal communities resemble the donor site, irregardless of where soil was delivered?
-#### Q2: Environmental filtering: Do AM fungal communities resemble the recipient sites, and are more dissimilar to the donor sites
-#### Q3: Propagule pressure: Do AM fungal communities resemble the donor site more in thicker topsoil layer treatments than they do in the control or dusted sites?
+### Logic   
+  Salvage topsoil was removed from a donor site and delivered to three recipient sites in 2015. We sampled all sites (Donor and recipients) prior to topsoil delivery and sequenced AM Fungi from all sites in 2015 and 2017 from manipulative plots, set up in a randomized block design at each site with: control treatments (no topsoil added), a dusting of topsoil, and three levels of topsoil thicknesses (2", 4" and 6" thick layers of this topsoil, originating from the donor site)), delivered to all recipient sites).
+  
+### Questions:
+###**Q1: 
+  Propagule determination: Do AM fungal communities resemble the donor site, regardless of where soil was delivered? Is provenance a driver of AM fungal community composition?
 
+###**Q2: 
+  Environmental filtering: Do AM fungal communities resemble the recipient sites, and are more dissimilar to the AM fungal communities from the donor site?
+
+###**Q3: 
+  Propagule pressure: Do AM fungal communities resemble the donor site more in higher level topsoil treatments, than they do in the control or dusted sites?
+
+####**Outputs:** 
+
+#Analysis of similarity:
+
+  Determine the similarity of AMF communities at each recipient site to the donor site, from where topsoils originated from. 
+    Generate heatmaps with distances, to visually determine - which sites/samples are more similar to each other, and which are more dissimilar. 
+    Generate NMDS / Pcoa, plotted with Year as shapes and Sites as colors, and Description as ...?
+    Run permanova
+      Do AM fungal communities at each site resemble the recipient sites, and are they more dissimilar to the donor sites?
+      
+#Functional group richness:
+
+  Determine the richness of AMF functional groups in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment)
+  
+#Taxonomic diversity:
+
+  Determine the OTU taxa richness (alpha diversity) of AMF communities in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment).
+  Determine the beta diversity of AMF communities in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment).
+  
+#Topsoil level treatments
+
+  Propagule pressure: Do AM fungal communities resemble the donor site more in thicker topsoil layer treatments than they do in the control or dusted sites?
+  Are the sites with Treat groups = S, more similar to the donor site than F, and are treatment groups S and F more similar to the donor site than T? Is this relationship clinal, with S being the thickest and most similar to donor site, followed by F, and then by T.
+  TO FIGURE OUT - how to address this question statistically??multiple regression with Treat on the X and similarity to Donor Site on the Y?? A permanova with multiple comparisons?
+  
+```
+
+** the following is adapted from AUthor: Michala Phillips 2017-07-07_Chapter_2_SSU_IntialClean **  
 ```{r, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
 ```
