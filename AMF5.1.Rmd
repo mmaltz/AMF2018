@@ -1,0 +1,294 @@
+---
+title: "AMF"
+author: "C. Nell"
+date: '20180817'
+output:
+  html_document: default
+  pdf_document: default
+---  
+
+###Questions:
+#### Q1: Propagule determination: Do AM fungal communities resemble the donor site, irregardless of where soil was delivered?
+#### Q2: Environmental filtering: Do AM fungal communities resemble the recipient sites, and are more dissimilar to the donor sites
+#### Q3: Propagule pressure: Do AM fungal communities resemble the donor site more in thicker topsoil layer treatments than they do in the control or dusted sites?
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
+```
+Load Required Packages
+```{r}
+library(tidyverse)
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+library(data.table)
+library(stringr)
+
+date<-format(Sys.time(), '%Y%b%d')
+date
+
+```
+
+** the following is adapted from 2017-07-07_Chapter_2_SSU_IntialClean **  
+
+Import data files
+```{r}
+# read in OTU table
+ssu<-fread('CSS_table_sorted.txt')
+str(ssu)
+
+## mapping data
+metassu<-fread('map_SSU_Salvage_qiimeformat.txt', header=TRUE)
+metassu$Year<-as.character(metassu$Year)
+metassu$Rep<-as.factor(metassu$Rep)
+str(metassu)
+```
+Clean SSU headers  
+```{r}
+colnames(ssu)
+head(ssu$taxonomy)
+
+# rename columns
+names(ssu)[1] <- 'ssuotu' #rename first column
+names(ssu)[names(ssu)=='taxonomy'] <- 'ssutaxonomy' # rename column that is currently called taxonomy
+
+# split taxonomy column
+?str_match
+ssu$ssukingdom<-str_match(ssu$ssutaxonomy, "k__(.*?);")[,2]
+ssu$ssuphylum<-str_match(ssu$ssutaxonomy, "p__(.*?);")[,2]
+ssu$ssuclass<-str_match(ssu$ssutaxonomy, "c__(.*?);")[,2]
+ssu$ssuorder<-str_match(ssu$ssutaxonomy, "o__(.*?);")[,2]
+ssu$ssufamily<-str_match(ssu$ssutaxonomy, "f__(.*?);")[,2]
+ssu$ssugenus<-str_match(ssu$ssutaxonomy, "g__(.*?);")[,2]
+ssu$ssuspecies<-str_match(ssu$ssutaxonomy, "s__(.*?)")[,2]
+
+colnames(ssu)
+ssu.save<-ssu
+
+#remove Geosiphonaceae
+unique(ssu$ssufamily)
+drop.family <- c("Geosiphonaceae")
+ssu  <- ssu[-which(ssu$ssufamily %in% drop.family),]
+
+#remove no blast hits
+unique(ssu$ssutaxonomy)
+drop <-c("No blast hit")
+ssu  <- ssu[-which(ssu$ssutaxonomy %in% drop),]
+
+## alternatively, can use filtering to drop these and avoid rewriting things 
+ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blast hit")
+
+```
+Take out functional groups 
+#
+ssu wide dataframe with lots of cols for taxonomy
+
+#
+```{r head of ssu}
+head(ssu)
+```
+Take data from wide to long and renaming variables
+```{r}
+ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
+str(ssul) 
+
+```
+Functional group OTU richnesses and read abundance for each functional group 
+
+Below is in format for graphing
+```{r}
+ssuguildREADRICH<- data.frame(ssul %>%
+                                group_by(ID,ssufamily) %>%
+                                summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                                         Read_Abundance_Sample = sum(ssureads)))
+
+
+```
+
+Make SSU data frame with family level OTU richness and Read abundance for each family
+```{r}
+ssufamily <- data.frame(ssul %>%
+                          group_by(ID, ssufamily) %>%
+                          summarise(Family_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
+                                    Family_Read_Abundance = sum(ssureads)))
+
+```
+Add metadata into ssu family
+```{r}
+colnames(metassu) # need to edit for appropriate headers
+names(metassu)[names(metassu) == 'SampleID2'] <- 'ID'
+
+ssufamily<-ssufamily%>%
+  left_join(metassu, by='ID')
+str(ssufamily)
+
+ssuguildREADRICH<-ssuguildREADRICH%>%
+  left_join(metassu, by='ID')
+str(ssuguildREADRICH)  
+
+filename<-paste0(date, '_ssu_funcguild_read_rich.csv')
+write.csv(ssuguildREADRICH, file = filename, row.names=FALSE)
+
+```
+Adds meta data to data for box plot
+
+```{r}
+###For ssufamily, moves ID to single line and family to the length
+LssufamilyOTURICH <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_OTU_Richness",  fun.aggregate = sum )
+LssufamilyOTUREAD <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_Read_Abundance",  fun.aggregate = sum )
+
+head(LssufamilyOTUREAD)
+```
+
+NOTFunctional group read and richness together
+TaxaReadRich
+```{r} 
+ssutaxaREADRICHlong<- data.frame(ssul %>%
+                                group_by(ID) %>%
+                                summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                                Read_Abundance_Sample = sum(ssureads)))
+View(ssutaxaREADRICHlong)
+ssutaxaREADRICHlong <- merge(ssutaxaREADRICHlong, metassu, by = "ID")
+
+filename<-paste0(date, '_ssu_taxa_read_rich.csv')
+write.csv(ssutaxaREADRICHlong, file = filename, row.names=FALSE)
+
+str(ssutaxaREADRICHlong)
+```
+
+Functional group read and richness separate
+
+WORK ON THIS!!
+```{r}
+ssutaxaREAD <- ssul %>% 
+  group_by(ID) %>%
+  summarise(Ancestral_Read_Abundance = sum(ssureads[Functional.Group == "Ancestral"]),
+            Edaphophilic_Read_Abundance = sum(ssureads[Functional.Group == "Edaphophilic"]),
+            Rhizophilic_Read_Abundance = sum(ssureads[Functional.Group == "Rhizophilic"]))
+
+
+ssuguildRICH<- ssul %>%
+  group_by(ID) %>%
+  summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+            Ancestral_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Ancestral"])),
+            Edaphophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Edaphophilic"])),
+            Rhizophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Rhizophilic"]))) 
+head(ssuguildRICH)
+```
+Add metadata to above 
+```{r}
+ssuguildRICH<-merge(ssuguildRICH, metassu, by="ID")
+ssuguildREAD<-merge(ssuguildREAD, metassu, by="ID")
+str(ssuguildRICH)
+str(ssuguildREAD)
+```
+```{r glm on Rhizophilic richness and metadata}
+y<-ssuguildRICH$Rhizophilic_Richness
+str(y)
+D<-ssuguildRICH$Description
+S<-ssuguildRICH$Site
+
+length(S)
+length(D)
+?lm
+#lm(y~D)
+SRhizRich<-lm(y ~ S)
+str(SRhizRich)
+
+DRhizRich<-lm(y~D)
+str(DRhizRich)
+
+DSRhizRich<-lm(y~S*D)
+str(DSRhizRich)
+
+summary(DSRhizRich)
+
+y<-ssuguildRICH$Rhizophilic_Richness
+str(y)
+D<-ssuguildRICH$Description
+S<-ssuguildRICH$Site
+length(S)
+length(D)
+?lm
+
+glm(y~D)
+G_SRhizRich<-glm(y~S)
+str(G_SRhizRich)
+
+G_DRhizRich<-glm(y~D)
+str(G_DRhizRich)
+summary(G_DRhizRich)
+
+DSRhizRich<-lm(y~S*D)
+str(DSRhizRich)
+
+summary(DSRhizRich)
+lm(y~D*S)
+lm(y~D+S)
+?glm
+glm(y ~ D)
+
+ #Description+Site
+
+```
+
+
+
+
+**Does not apply below**  
+
+Separating data by root and soil
+```{r, eval=FALSE, include=FALSE}
+## issue
+## TYPE does not exist in data
+
+# root
+ssuroot.readreach<-subset(ssuguildREADRICH,ssuguildREADRICH$TYPE == "ROOT")
+ssuguildREADRICHlong<-merge(ssuguildREADRICHlong,metassu,by="ID")
+ssuroot.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == "ROOT")
+#soil
+ssusoil.readreach<-subset(ssuguildREADRICH,ssuguildREADRICH$TYPE == "SOIL")
+ssuguildREADRICHlong<-merge(ssuguildREADRICHlong,metassu,by="ID")
+ssusoil.readreachlong<-subset(ssuguildREADRICHlong,ssuguildREADRICHlong$TYPE == "SOIL")
+
+```
+Pull out roots and soil for Family DFs
+```{r, include=FALSE, eval=FALSE}
+ssufamroot<-subset.data.frame(ssufamily,TYPE == "ROOT")
+names(ssufamroot)[names(ssufamroot)=="ssufamily"]<-"Family"
+ssufamsoil<-subset.data.frame(ssufamily,TYPE == "SOIL")
+names(ssufamsoil)[names(ssufamsoil)=="ssufamily"]<-"Family"
+```
+
+
+Plotting  
+**start '2017_16_07_SSU_Boxplots.R'** 
+```{r}
+#richness
+plot.df<-ssuguildREADRICH
+str(plot.df)
+
+richbox <- ggplot(plot.df, aes(x = Functional.Group , y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+richbox
+
+richbox <- richbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Richness")    
+richbox
+
+richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
+richbox
+```  
+```{r, eval=FALSE}
+##reads
+plot.read<-ssuguildREAD
+str(plot.read)
+
+#reachbox <- ggplot(plot.read, aes(x = Functional.Group , y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+reachbox
+
+reachbox <- reachbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Reads")    
+reachbox
+
+reachbox <-reachbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
+reachbox
+
+```

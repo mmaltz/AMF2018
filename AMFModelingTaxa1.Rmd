@@ -1,7 +1,7 @@
 ---
 title: "AMF"
-author: "C. Nell"
-date: '20180821'
+author: "M. Maltz"
+date: '20180827'
 output:
   html_document: default
   pdf_document: default
@@ -126,117 +126,250 @@ ssu <- ssu[complete.cases(ssu),]
 ```
 Add in functional groups 
 
-```{r}
-# this does the same as above but avoids hard coding names, more generalized
-ssu.fg <- ssu %>%
-  mutate(Functional.Group = case_when(
-    ssufamily %in% c('Glomeraceae','Claroideoglomeraceae', 'Paraglomeraceae') ~ 'Rhizophilic',
-    ssufamily %in% c('Gigasporaceae', 'Diversisporaceae') ~ 'Edaphophilic',
-    ssufamily %in% c('Ambisporaceae', 'Archaeosporaceae','Acaulosporaceae') ~ 'Ancestral'
-  ))
+```{r Take data from wide to long and renaming variables}
+ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
+str(ssul) 
+
 
 ```
-Take data from wide to long and renaming variables
+
 ```{r}
-ssul <-melt(ssu.fg, variable.name='ID',value.name='ssureads')
+ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
 str(ssul) 
 
 ```
-Functional group OTU richnesses and read abundance for each functional group 
+OTU richnesses and read abundance for each taxonomic group 
 
 Below is in format for graphing
 ```{r}
-ssuguildREADRICH<- data.frame(ssul %>%
-                                group_by(ID,Functional.Group) %>%
+ssugenusREADRICH<- data.frame(ssul %>%
+                                group_by(ID,ssugenus) %>%
                                 summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
                                          Read_Abundance_Sample = sum(ssureads)))
 
 
 ```
 
-Make SSU data frame with family level OTU richness and Read abundance for each family
+Make SSU data frame with genus level OTU richness and Read abundance for each genus
 ```{r}
-ssufamily <- data.frame(ssul %>%
-                          group_by(ID, ssufamily) %>%
-                          summarise(Family_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
-                                    Family_Read_Abundance = sum(ssureads)))
+ssugenus <- data.frame(ssul %>%
+                          group_by(ID, ssugenus) %>%
+                          summarise(Genus_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
+                                    Genus_Read_Abundance = sum(ssureads)))
 
 ```
-Add metadata into ssu family
+Add metadata into ssu genus
 ```{r}
 colnames(metassu) # need to edit for appropriate headers
 names(metassu)[names(metassu) == 'SampleID2'] <- 'ID'
 
-ssufamily<-ssufamily%>%
+ssugenus<-ssugenus%>%
   left_join(metassu, by='ID')
-str(ssufamily)
-
-ssuguildREADRICH<-ssuguildREADRICH%>%
-  left_join(metassu, by='ID')
-str(ssuguildREADRICH)  
-
-filename<-paste0(date, '_ssu_funcguild_read_rich.csv')
-write.csv(ssuguildREADRICH, file = filename, row.names=FALSE)
+str(ssugenus)
 
 ```
+
 Adds meta data to data for box plot
-
 ```{r}
-###For ssufamily, moves ID to single line and family to the length
-LssufamilyOTURICH <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_OTU_Richness",  fun.aggregate = sum )
-LssufamilyOTUREAD <- dcast(ssufamily, ID ~ ssufamily, value.var = "Family_Read_Abundance",  fun.aggregate = sum )
+ssugenusREADRICH<-ssugenusREADRICH%>%
+  left_join(metassu, by='ID')
+str(ssugenusREADRICH)  
 
-head(LssufamilyOTUREAD)
+filename<-paste0(date, '_ssu_genus_read_rich.csv')
+write.csv(ssugenusREADRICH, file = filename, row.names=FALSE)
+```
+#move ID to single line and genus to the length
+```{r}
+###For ssufamily, moves ID to single line and genus to the length
+LssugenusOTURICH <- dcast(ssugenus, ID ~ ssugenus, value.var = "Genus_OTU_Richness",  fun.aggregate = sum )
+LssugenusOTUREAD <- dcast(ssugenus, ID ~ ssugenus, value.var = "Genus_Read_Abundance",  fun.aggregate = sum )
+
+head(LssugenusOTUREAD)
 ```
 
-Functional group read and richness together
+Genera reads and richness together
+###WORKED ON THIS 20180826
+
+###REPLACED Functional.Group with ssugenus 
+
 ```{r} 
-ssuguildREADRICHlong<- data.frame(ssul %>%
+ssugenusREADRICHlong<- data.frame(ssul %>%
                                 group_by(ID) %>%
                                 summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
-                                Ancestral_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Ancestral"])),
-                                Edaphophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Edaphophilic"])),
-                                Rhizophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Rhizophilic"])),
-                                Ancestral_Read_Abundance = sum(ssureads[Functional.Group == "Ancestral"]),
-                                Edaphophilic_Read_Abundance = sum(ssureads[Functional.Group == "Edaphophilic"]),
-                                Rhizophilic_Read_Abundance = sum(ssureads[Functional.Group == "Rhizophilic"]),
+                                Acaulospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Acaulospora"])),
+                                Ambispora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Ambispora"])),
+                                Archaeospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Archaeospora"])),
+                                Claroideoglomus_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Claroideoglomus"])),
+                                Diversispora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Diversispora"])),
+                                Glomus_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Glomus"])),
+                                Kuklospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Kuklospora"])),
+                                Paraglomus_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Paraglomus"])),
+                                Acaulospora_Read_Abundance = sum(ssureads[ssugenus == "Acaulospora"]),
+                                Ambispora_Read_Abundance = sum(ssureads[ssugenus == "Ambispora"]),
+                                Archaeospora_Read_Abundance = sum(ssureads[ssugenus == "Archaeospora"]),
+                                Claroideoglomus_Read_Abundance = sum(ssureads[ssugenus == "Claroideoglomus"]),
+                                Diversispora_Read_Abundance = sum(ssureads[ssugenus == "Diversispora"]),
+                                Glomus_Read_Abundance = sum(ssureads[ssugenus == "Glomus"]),
+                                Kuklospora_Read_Abundance = sum(ssureads[ssugenus == "Kuklospora"]),
+                                Paraglomus_Read_Abundance = sum(ssureads[ssugenus == "Paraglomus"]),
                                 Read_Abundance_Sample = sum(ssureads)))
-View(ssuguildREADRICHlong)
-ssuguildREADRICHlong <- merge(ssuguildREADRICHlong, metassu, by = "ID")
+View(ssugenusREADRICHlong)
+ssugenusREADRICHlong <- merge(ssugenusREADRICHlong, metassu, by = "ID")
 
-filename<-paste0(date, '_ssu_funcguild_read_rich.csv')
-write.csv(ssuguildREADRICHlong, file = filename, row.names=FALSE)
+filename<-paste0(date, '_ssu_genus_read_rich.csv')
+write.csv(ssugenusREADRICHlong, file = filename, row.names=FALSE)
 
-str(ssuguildREADRICHlong)
+str(ssugenusREADRICHlong)
+View(ssugenusREADRICHlong)
+```
+#Non Unifrac distances, try with jaccard and bray
+###WORK ON THIS
+#### Permanova  
+  Permanova tests for differences in composition among groups  
+    Reminder - permanova is always based on pairwise distances/dissimilarities.  
+      Can either nest Treat in Year with Year/Treat
+          Or, can restrict permutations within year, using strata='Year'
+          Or, can remove Year, and focus on Treat and other grouping varuables, like Site
+          
+##Also, dist.j<-vegdist(ssugenusREADRICHlong[,-1], method='jaccard', na.rm=TRUE)
+#dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
+##############################################################################################################
+######################################
+## Part 3 - multivariate community analyses and data visualization
+```{r}
+library(dplyr)
+library(reshape2)
+library(tidyr)
+library(vegan)
+library(ggplot2)# ggplot resource -http://rpubs.com/collnell/ggplot2
+library(tidyverse) # useful packages in 1 - dplyr, ggplot2, tidyr +
+```
+# community matrix at order level with mapping data
+#otu_map<-read.csv('/Users/maltz/Desktop/RdataBreathe/otus_by_class.csv')
+```{r}
+head(ssugenusREADRICHlong)
+colnames(ssugenusREADRICHlong)
+```
+#Create the comm.grps from ssugenusREADRICHlong 
+#To make the comm.grps I want the first column (col 1), then I don't want (want to de-select) cols 2 through 22, and then I want the rest of the data = cols 23-30
+#This didn't work: 
+  comm.grps<-ssugenusREADRICHlong%>%dplyr::select('#SampleID':Description) #mapping data
+  #heads[1,-c(12:17)]
+  comm.grps<-ssugenusREADRICHlong%>%dplyr::select['ID':Description,-c(2:22)] #mapping data
+  
+  #So I used the longhand way of typing out all the column names that I wanted to keep
+  
+```{r}
+?dplyr::select
+
+comm.grps<-ssugenusREADRICHlong%>%dplyr::select('ID','Location','Year','Site','Treat','Rep','TSDel','Description') #mapping data
+colnames(comm.grps)
+```
+###WORK ON THIS!!!
+Make the comm.mat 
+```{r}
+comm.mat<-ssugenusREADRICHlong%>%dplyr::select(Acaulospora_Richness:Paraglomus_Richness) # community matrix - all but mapping data
+```
+######################################
+## comparing ecological communities
+# diversity vs composition
+# abundance and richness are univariate response variables used to quantify communities
+# in multivariate analyses we have these variables for multiple entities
+# similarly, multivariate analyses have counterparts in univariate stats - t-test, ANOVA, mutliple regression
+## univariate analyses of diversity
+```{r}
+list.files() #shows what is in folder
+  #View(comm.grps)
+  str(comm.grps)
+  head(comm.grps)
+    str(comm.mat)
+  head(comm.mat)
+```
+## does diversity vary across groups?
+# compute diversity indices
+#indices <- comm.grps
+#indices$richness <- rowSums(comm.mat >0)
+#indices$shannon <- diversity(comm.mat, index='shannon')
+#indices$rarified <- c(rarefy(comm.mat, sample=50)) # rarefied diversity for a given sample size
+```{r}
+indices <- comm.grps
+indices$richness <- rowSums(comm.mat >0)
+indices$shannon <- diversity(comm.mat, index='shannon')
+#indices$rarified <- c(rarefy(comm.mat, sample=18103)) # rarefied diversity for a given sample size
 ```
 
-Functional group read and richness separate 
-```{r}
+  
+###WORK ON THIS!!!
+#Depending on what  I put first in the model (Treat or Description) The terms are either significant (p-value) or not-significant.
+```{r permanova test}
+set.seed(304)
+?vegdist
 
-ssuguildREAD <- ssul %>% 
-  group_by(ID) %>%
-  summarise(Ancestral_Read_Abundance = sum(ssureads[Functional.Group == "Ancestral"]),
-            Edaphophilic_Read_Abundance = sum(ssureads[Functional.Group == "Edaphophilic"]),
-            Rhizophilic_Read_Abundance = sum(ssureads[Functional.Group == "Rhizophilic"]))
+## are the results the same with other (non evolutionary) dissimiarlity indices?
+#dist.j<-vegdist(ssugenusREADRICHlong[,-1], method='jaccard')
+#dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
+dist.j<-vegdist(comm.mat, method='jaccard')
+dist.bc<-vegdist(comm.mat, method='bray', na.rm=TRUE)
+AMTreat.div<-adonis2(dist.j~Treat, data=comm.grps, permutations = 999, method="bray")
+AMTreat.div
 
+AMTD.div<-adonis2(dist.j~Treat+Description, data=comm.grps, permutations = 999, method="bray")
+AMTD.div
 
-ssuguildRICH<- ssul %>%
-  group_by(ID) %>%
-  summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
-            Ancestral_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Ancestral"])),
-            Edaphophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Edaphophilic"])),
-            Rhizophilic_Richness = length(unique(ssuotu[ssureads>0 & Functional.Group =="Rhizophilic"]))) 
-head(ssuguildRICH)
+AMTSD.div<-adonis2(dist.bc~Treat+Site*Description, data=comm.grps, permutations = 999, method="bray")
+AMTSD.div
+
+AMD_ST_J.div<-adonis2(dist.j~Description+Site*Treat, data=comm.grps, permutations = 999, method="jaccard")
+AMD_ST_J.div
+
+AMD_ST_BC.div<-adonis2(dist.j~Description+Site*Treat, data=comm.grps, permutations = 999, method="bray")
+AMD_ST_BC.div
+
 ```
-Add metadata to above 
-#Everytime I run this the output is different, sometime it merges the data with the metadata with two copies of the metadata (e.g., Site.x and Site.y)
-#To address this, DON'T RUN NEXT CHUNK WITHOUT RERUNNING THE PREVIOUS CHUNK GENERATING THE ORIGINAL ssuguildRICH FILE, WITHOUT THE METADATA, tried to use "all.y = FALSE" after merge(ssuguildRICH, metassu, by="ID",""
 ```{r}
-ssuguildRICH<-merge(ssuguildRICH, metassu, by="ID", all.y = FALSE)
-ssuguildREAD<-merge(ssuguildREAD, metassu, by="ID", all.y = FALSE)
-str(ssuguildRICH)
-str(ssuguildREAD)
-View(ssuguildREAD)
+amfMDS<-metaMDS(comm.mat, distance="bray", k=2, trymax=35, autotransform=TRUE) ##k is the number of dimensions
+amfMDS ##metaMDS takes eaither a distance matrix or your community matrix (then requires method for 'distance=')
+
+stressplot(amfMDS)
+
+#install.packages('ggplot2') ##plotting package
+library(ggplot2)
+
+NMDS1 <- amfMDS$points[,1] ##also found using scores(amfMDS)
+NMDS2 <- amfMDS$points[,2]
+?cbind
+amf.plot<-cbind(comm.grps, NMDS1, NMDS2, comm.mat)
+p<-ggplot(amf.plot, aes(NMDS1, NMDS2, color=Year))+
+  geom_point(position=position_jitter(.1), shape=3)+##separates overlapping points
+  stat_ellipse(type='t',size =1)+ ##draws 95% confidence interval ellipses
+  theme_minimal()
+p
+
+plot<-ggplot(amf.plot, aes(NMDS1, NMDS2, color=Treat))+
+  stat_ellipse(type='t',size =1)+
+  theme_minimal()+geom_text(data=amf.plot,aes(NMDS1, NMDS2, label=Site), position=position_jitter(.35))+
+  annotate("text", x=min(NMDS1), y=min(NMDS2), label=paste('Stress =',round(amfMDS$stress,3))) #add stress to plot
+plot
+
+```
+
+```{r}
+#ad.bc<-adonis2(dist.bc~Month+Year+Elevation, data=grps, permutations=1000)
+#ad.bc
+
+#ad.j<-adonis2(dist.j~Month+Year+Elevation, data=grps, permutations=1000)
+#ad.j
+
+
+```
+
+
+
+
+```{r}
+#salvage.div<-adonis2(bird.dist~DIVERSITY, data=birds, permutations = 999, method="bray", strata="PLOT")
+#bird.div
+```
 ```
 Examining the statistic support for increased rhizophilic richness in recipientpost plots
 ```{r glm on Rhizophilic richness and metadata}

@@ -18,3 +18,8 @@ magrittr
 cowplot
 formatR
 bindrcpp
+carData
+car
+MASS
+Matrix
+lme4
