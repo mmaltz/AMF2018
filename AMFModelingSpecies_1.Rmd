@@ -1,7 +1,7 @@
 ---
 title: "AMF"
 author: "M. Maltz"
-date: '20180828'
+date: '20180829'
 output:
   html_document: default
   pdf_document: default
@@ -103,11 +103,11 @@ ssu$ssuclass<-str_match(ssu$ssutaxonomy, "c__(.*?);")[,2]
 ssu$ssuorder<-str_match(ssu$ssutaxonomy, "o__(.*?);")[,2]
 ssu$ssufamily<-str_match(ssu$ssutaxonomy, "f__(.*?);")[,2]
 ssu$ssugenus<-str_match(ssu$ssutaxonomy, "g__(.*?);")[,2]
-ssu$ssuspecies<-str_match(ssu$ssutaxonomy, "s__(.*?)")[,2]
+ssu$ssuspecies<-str_match(ssu$ssutaxonomy, "s__(.*?)$")[,2]
 
 colnames(ssu)
 ssu.save<-ssu
-
+unique(ssu$ssuspecies)
 #remove Geosiphonaceae
 unique(ssu$ssufamily)
 drop.family <- c("Geosiphonaceae")
@@ -124,7 +124,9 @@ ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blas
 ssu <- ssu[complete.cases(ssu),]
 
 ```
-Add in functional groups 
+Add in functional groups
+
+##Make the change to change the matrices into species level
 
 ```{r Take data from wide to long and renaming variables}
 ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
@@ -143,57 +145,57 @@ OTU richnesses and read abundance for each taxonomic group
 Below is in format for graphing
 ```{r}
 ssugenusREADRICH<- data.frame(ssul %>%
-                                group_by(ID,ssugenus) %>%
+                                group_by(ID,ssuspecies) %>%
                                 summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
                                          Read_Abundance_Sample = sum(ssureads)))
 
 
 ```
 
-Make SSU data frame with genus level OTU richness and Read abundance for each genus
+Make SSU data frame with species level OTU richness and Read abundance for each species
 ```{r}
-ssugenus <- data.frame(ssul %>%
-                          group_by(ID, ssugenus) %>%
-                          summarise(Genus_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
-                                    Genus_Read_Abundance = sum(ssureads)))
+ssuspecies <- data.frame(ssul %>%
+                          group_by(ID, ssuspecies) %>%
+                          summarise(species_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
+                                    species_Read_Abundance = sum(ssureads)))
 
 ```
-Add metadata into ssu genus
+Add metadata into ssu species
 ```{r}
 colnames(metassu) # need to edit for appropriate headers
 names(metassu)[names(metassu) == 'SampleID2'] <- 'ID'
 
-ssugenus<-ssugenus%>%
+ssuspecies<-ssuspecies%>%
   left_join(metassu, by='ID')
-str(ssugenus)
+str(ssuspecies)
 
 ```
 
 Adds meta data to data for box plot
 ```{r}
-ssugenusREADRICH<-ssugenusREADRICH%>%
+ssuspeciesREADRICH<-ssuspeciesREADRICH%>%
   left_join(metassu, by='ID')
-str(ssugenusREADRICH)  
+str(ssuspeciesREADRICH)  
 
-filename<-paste0(date, '_ssu_genus_read_rich.csv')
-write.csv(ssugenusREADRICH, file = filename, row.names=FALSE)
+filename<-paste0(date, '_ssu_species_read_rich.csv')
+write.csv(ssuspeciesREADRICH, file = filename, row.names=FALSE)
 ```
-#move ID to single line and genus to the length
+#move ID to single line and species to the length
 ```{r}
-###For ssufamily, moves ID to single line and genus to the length
-LssugenusOTURICH <- dcast(ssugenus, ID ~ ssugenus, value.var = "Genus_OTU_Richness",  fun.aggregate = sum )
-LssugenusOTUREAD <- dcast(ssugenus, ID ~ ssugenus, value.var = "Genus_Read_Abundance",  fun.aggregate = sum )
+###For ssufamily, moves ID to single line and species to the length
+LssuspeciesOTURICH <- dcast(ssuspecies, ID ~ ssuspecies, value.var = "species_OTU_Richness",  fun.aggregate = sum )
+LssuspeciesOTUREAD <- dcast(ssuspecies, ID ~ ssuspecies, value.var = "species_Read_Abundance",  fun.aggregate = sum )
 
-head(LssugenusOTUREAD)
+head(LssuspeciesOTUREAD)
 ```
 
 Genera reads and richness together
 ###WORKED ON THIS 20180826
 
-###REPLACED Functional.Group with ssugenus 
+###REPLACED Functional.Group with ssuspecies 
 
 ```{r} 
-ssugenusREADRICHlong<- data.frame(ssul %>%
+ssuspeciesREADRICHlong<- data.frame(ssul %>%
                                 group_by(ID) %>%
                                 summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
                                 Acaulospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Acaulospora"])),
@@ -279,7 +281,7 @@ comm.mat<-ssugenusREADRICHlong%>%dplyr::select(Acaulospora_Richness:Paraglomus_R
 ## univariate analyses of diversity
 ```{r}
 list.files() #shows what is in folder
-  #View(comm.mat)
+  View(comm.mat)
   str(comm.grps)
   head(comm.grps)
     str(comm.mat)
@@ -373,31 +375,20 @@ class(comm.mat)
 #x=comm.mat[comm.grps$Year == "2015",]
 #y=comm.grps[comm.grps$Year == "2015",]
 
-```
-commented out some difficult lines
-```{r}
-#what is x?
 
-#SSMDS<-metaMDS(x, distance="bray", k = 2, trymax = 35, autotransform = TRUE) ##k is the number of dimensions
-#SSMDS ##metaMDS takes eaither a distance matrix or your community matrix (then requires method for 'distance=')
+SSMDS<-metaMDS(x, distance="bray", k=2, trymax=35, autotransform=TRUE) ##k is the number of dimensions
+SSMDS ##metaMDS takes eaither a distance matrix or your community matrix (then requires method for 'distance=')
 
-#stressplot(SSMDS)
+stressplot(SSMDS)
 
 #install.packages('ggplot2') ##plotting package
 library(ggplot2)
 
-#NMDS1 <- SSMDS$points[,1] ##also found using scores(amfMDS)
-#NMDS2 <- SSMDS$points[,2]
+NMDS1 <- SSMDS$points[,1] ##also found using scores(amfMDS)
+NMDS2 <- SSMDS$points[,2]
 ?cbind
 
-```
-
-The code was stopping at this point, and I created a new chunk below
-
-
-```{r}
-
-#SSamf.plot<-cbind(y, NMDS1, NMDS2, x)
+SSamf.plot<-cbind(y, NMDS1, NMDS2, x)
 
 Sp<-ggplot(SSamf.plot, aes(NMDS1, NMDS2, color=Site))+
   geom_point(position=position_jitter(.1), shape=7)+##separates overlapping points
@@ -418,6 +409,8 @@ plot<-ggplot(SSamf.plot, aes(NMDS1, NMDS2, color=Treat))+
 plot
 ```
 
+
+
 ```{r}
 #ad.bc<-adonis2(dist.bc~Month+Year+Elevation, data=grps, permutations=1000)
 #ad.bc
@@ -435,7 +428,7 @@ plot
 #salvage.div<-adonis2(bird.dist~DIVERSITY, data=birds, permutations = 999, method="bray", strata="PLOT")
 #bird.div
 ```
-
+```
 Examining the statistic support for increased rhizophilic richness in recipientpost plots
 ```{r glm on Rhizophilic richness and metadata}
 y<-ssuguildRICH$Rhizophilic_Richness
@@ -553,12 +546,6 @@ qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma", shape = gamma$estimate[
 ```{r glm gaussian}
 modelingAMF <- glm(OTU_Richness_Sample.t ~ Site + Treat, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
 modelingAMF
-
-modelingAMF_MP <- glm(OTU_Richness_Sample.t ~ Site + Treat + Description + Rep + Year, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
-plot(modelingAMF_MP)
-stepAIC(modelingAMF_MP) 
-modelingAMF_MP
-
 
 stepAIC(modelingAMF) 
 modelingAMFfinal <- glm(OTU_Richness_Sample.t ~ Site + Treat, family = gaussian(link = "identity"), data = ssuguildREADRICHlong)

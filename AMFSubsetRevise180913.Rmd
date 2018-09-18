@@ -80,7 +80,7 @@ ssu<-fread('CSS_table_sorted.txt')
 str(ssu)
 
 ## mapping data
-metassu<-fread('map_SSU_Salvage_qiimeformat.txt', header=TRUE)
+metassu<-fread('mapSal.txt', header=TRUE)
 metassu$Year<-as.character(metassu$Year)
 metassu$Rep<-as.factor(metassu$Rep)
 metassu$Treat<-as.factor(metassu$Treat)
@@ -103,15 +103,19 @@ ssu$ssuclass<-str_match(ssu$ssutaxonomy, "c__(.*?);")[,2]
 ssu$ssuorder<-str_match(ssu$ssutaxonomy, "o__(.*?);")[,2]
 ssu$ssufamily<-str_match(ssu$ssutaxonomy, "f__(.*?);")[,2]
 ssu$ssugenus<-str_match(ssu$ssutaxonomy, "g__(.*?);")[,2]
-ssu$ssuspecies<-str_match(ssu$ssutaxonomy, "s__(.*?)")[,2]
+ssu$ssuspecies<-str_match(ssu$ssutaxonomy, "s__(.*?)$")[,2]
 
+unique(ssu$ssuspecies)
 colnames(ssu)
 ssu.save<-ssu
+#View(ssu)
 
 #remove Geosiphonaceae
 unique(ssu$ssufamily)
 drop.family <- c("Geosiphonaceae")
 ssu  <- ssu[-which(ssu$ssufamily %in% drop.family),]
+
+
 
 #remove no blast hits
 unique(ssu$ssutaxonomy)
@@ -122,7 +126,7 @@ ssu  <- ssu[-which(ssu$ssutaxonomy %in% drop),]
 ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blast hit")
 
 ssu <- ssu[complete.cases(ssu),]
-
+unique(ssu$ssuspecies)
 ```
 Add in functional groups 
 
@@ -133,7 +137,7 @@ str(ssul)
 
 ```
 
-```{r}
+```{r include=FALSE, eval=FALSE}
 ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
 str(ssul) 
 
@@ -152,7 +156,7 @@ ssugenusREADRICH<- data.frame(ssul %>%
 
 Make SSU data frame with genus level OTU richness and Read abundance for each genus
 ```{r}
-ssugenus <- data.frame(ssul %>%
+ssugenera <- data.frame(ssul %>%
                           group_by(ID, ssugenus) %>%
                           summarise(Genus_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
                                     Genus_Read_Abundance = sum(ssureads)))
@@ -163,9 +167,9 @@ Add metadata into ssu genus
 colnames(metassu) # need to edit for appropriate headers
 names(metassu)[names(metassu) == 'SampleID2'] <- 'ID'
 
-ssugenus<-ssugenus%>%
+ssugenera<-ssugenera%>%
   left_join(metassu, by='ID')
-str(ssugenus)
+str(ssugenera)
 
 ```
 
@@ -191,6 +195,7 @@ Genera reads and richness together
 ###WORKED ON THIS 20180826
 
 ###REPLACED Functional.Group with ssugenus 
+###Work on changing to species in the next iteration
 
 ```{r} 
 ssugenusREADRICHlong<- data.frame(ssul %>%
@@ -222,7 +227,7 @@ write.csv(ssugenusREADRICHlong, file = filename, row.names=FALSE)
 str(ssugenusREADRICHlong)
 ##View(ssugenusREADRICHlong)
 ```
-#Non Unifrac distances, try with jaccard and bray
+#Non Unifrac distances, try with bray
 ###WORK ON THIS
 #### Permanova  
   Permanova tests for differences in composition among groups  
@@ -232,7 +237,7 @@ str(ssugenusREADRICHlong)
           Or, can remove Year, and focus on Treat and other grouping varuables, like Site
           
 ##Also, dist.j<-vegdist(ssugenusREADRICHlong[,-1], method='jaccard', na.rm=TRUE)
-#dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
+#USE BRAY #dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
 ##############################################################################################################
 ######################################
 ## Part 3 - multivariate community analyses and data visualization
@@ -255,7 +260,9 @@ colnames(ssugenusREADRICHlong)
 #This didn't work: 
   comm.grps<-ssugenusREADRICHlong%>%dplyr::select('#SampleID':Description) #mapping data
   #heads[1,-c(12:17)]
+  ##This will not work because it uses numeric syntax and the text, only use one or the other (only select; or only numeric -c)
   comm.grps<-ssugenusREADRICHlong%>%dplyr::select['ID':Description,-c(2:22)] #mapping data
+  
   
   #So I used the longhand way of typing out all the column names that I wanted to keep
   
@@ -267,6 +274,7 @@ colnames(comm.grps)
 ```
 ###WORK ON THIS!!!
 Make the comm.mat 
+##Make the changes for this for species for the next iteration
 ```{r}
 comm.mat<-ssugenusREADRICHlong%>%dplyr::select(Acaulospora_Richness:Paraglomus_Richness) # community matrix - all but mapping data
 ```
@@ -295,34 +303,107 @@ list.files() #shows what is in folder
 indices <- comm.grps
 indices$richness <- rowSums(comm.mat >0)
 indices$shannon <- diversity(comm.mat, index='shannon')
+View(indices)
 #indices$rarified <- c(rarefy(comm.mat, sample=18103)) # rarefied diversity for a given sample size
 ```
 
   
 ###WORK ON THIS!!!
 #Depending on what  I put first in the model (Treat or Description) The terms are either significant (p-value) or not-significant.
+
+Subset the data
+```{r subset data WestLoma}
+
+prevpost.mat=comm.mat[comm.grps$Site=="WL",]
+prevpost.grps=comm.grps[comm.grps$Site=="WL",]
+distWL.bc<-vegdist(prevpost.mat, method='bray', na.rm=TRUE)
+WLTreat.div<-adonis2(distWL.bc~Description, strata= Treat, data=prevpost.grps, permutations = 999, method="bray")
+WLTreat.div
+
+dvpostWL.mat=comm.mat[(comm.grps$Site=="WL" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+dvpostWL.grps=comm.grps[(comm.grps$Site=="WL" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+distDWL.bc<-vegdist(dvpostWL.mat, method='bray', na.rm=TRUE)
+DWLTreat.div<-adonis2(distDWL.bc~Description, strata= Treat, data=dvpost.grps, permutations = 999, method="bray")
+DWLTreat.div
+
+
+```
+
+```{r subset PS}
+prevpostPS.mat=comm.mat[comm.grps$Site=="PS",]
+prevpostPS.grps=comm.grps[comm.grps$Site=="PS",]
+distPS.bc<-vegdist(prevpostPS.mat, method='bray', na.rm=TRUE)
+PSTreat.div<-adonis2(distPS.bc~Description, strata= Treat, data=prevpostPS.grps, permutations = 999, method="bray")
+PSTreat.div
+dim(prevpostPS.grps)
+View(prevpostPS.grps)
+
+
+dvpostPS.mat=comm.mat[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+dvpostPS.grps=comm.grps[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+distDPS.bc<-vegdist(dvpostPS.mat, method='bray', na.rm=TRUE)
+DPSTreat.div<-adonis2(distDPS.bc~Description, strata= Treat, data=dvpostPS.grps, permutations = 999, method="bray")
+DPSTreat.div
+dim(dvpostPS.grps)
+```
+
+```{r subset Treatments of topsoil thickess PS}
+postTreatPS.mat=comm.mat[comm.grps$Site=="PS",]
+postTreatPS.grps=comm.grps[comm.grps$Site=="PS",]
+distTPS.bc<-vegdist(postTreatPS.mat, method='bray', na.rm=TRUE)
+
+View(postTreatPS.grps)
+
+contr.mineCD <- function(...) cbind(c(-1,1,0,0,0,0))
+PSTreatCD<-adonis2(distTPS.bc~Treat, data=postTreatPS.grps, permutations = 999, method="bray",contr.unordered = "contr.mineCD")
+PSTreatCD
+
+contr.mineCT <- function(...) cbind(c(-1,0,1,0,0,0))
+PSTreatCT<-adonis2(distTPS.bc~Treat, data=postTreatPS.grps, permutations = 999, method="bray",contr.unordered = "contr.mineCT")
+PSTreatCT
+
+contr.mineOC <- function(...) cbind(c(-1,0,0,0,0,1))
+PSTreatOC<-adonis2(distTPS.bc~Treat, data=postTreatPS.grps, permutations = 999, method="bray",contr.unordered = "contr.mineOC")
+PSTreatOC
+
+
+postTreatPS.div<-adonis2(distPS.bc~Description, strata= Treat, data=postTreatPS.grps, permutations = 999, method="bray")
+postTreatPS.div
+dim(postTreatPS.grps)
+View(postTreatPS.grps)
+
+
+dvpostPS.mat=comm.mat[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+dvpostPS.grps=comm.grps[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+distDPS.bc<-vegdist(dvpostPS.mat, method='bray', na.rm=TRUE)
+DPSTreat.div<-adonis2(distDPS.bc~Description, strata= Treat, data=dvpostPS.grps, permutations = 999, method="bray")
+DPSTreat.div
+dim(dvpostPS.grps)
+```
+
 ```{r permanova test}
+
 set.seed(304)
 ?vegdist
 
 ## are the results the same with other (non evolutionary) dissimiarlity indices?
 #dist.j<-vegdist(ssugenusREADRICHlong[,-1], method='jaccard')
 #dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
-dist.j<-vegdist(comm.mat, method='jaccard')
+#dist.j<-vegdist(comm.mat, method='jaccard')
 dist.bc<-vegdist(comm.mat, method='bray', na.rm=TRUE)
-AMTreat.div<-adonis2(dist.j~Treat, data=comm.grps, permutations = 999, method="bray")
+AMTreat.div<-adonis2(dist.bc~Treat, data=comm.grps, permutations = 999, method="bray")
 AMTreat.div
 
-AMTD.div<-adonis2(dist.j~Treat+Description, data=comm.grps, permutations = 999, method="bray")
+AMTD.div<-adonis2(dist.bc~Treat+Description, data=comm.grps, permutations = 999, method="bray")
 AMTD.div
 
 AMTSD.div<-adonis2(dist.bc~Treat+Site*Description, data=comm.grps, permutations = 999, method="bray")
 AMTSD.div
 
-AMD_ST_J.div<-adonis2(dist.j~Description+Site*Treat, data=comm.grps, permutations = 999, method="jaccard")
+AMD_ST_J.div<-adonis2(dist.bc~Description+Site*Treat, data=comm.grps, permutations = 999, method="bray")
 AMD_ST_J.div
 
-AMD_ST_BC.div<-adonis2(dist.j~Description+Site*Treat, data=comm.grps, permutations = 999, method="bray")
+AMD_ST_BC.div<-adonis2(dist.bc~Description+Site+Treat, data=comm.grps, permutations = 999, method="bray")
 AMD_ST_BC.div
 
 ```
@@ -330,7 +411,7 @@ AMD_ST_BC.div
 #Depending on what comes first in the model, we see different significance of these factors
 
 ```{r}
-AMTreat.div<-adonis2(dist.j~Treat*Description, data=comm.grps, permutations = 999, method="bray")
+AMTreat.div<-adonis2(dist.bc~Treat*Description, data=comm.grps, permutations = 999, method="bray")
 AMTreat.div
 ```
 
