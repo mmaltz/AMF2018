@@ -1,0 +1,693 @@
+---
+title: "AMF"
+author: "M. Maltz"
+date: '20180828'
+output:
+  html_document: default
+  pdf_document: default
+---  
+
+### Logic   
+  Salvage topsoil was removed from a donor site and delivered to three recipient sites in 2015. We sampled all sites (Donor and recipients) prior to topsoil delivery and sequenced AM Fungi from all sites in 2015 and 2017 from manipulative plots, set up in a randomized block design at each site with: control treatments (no topsoil added), a dusting of topsoil, and three levels of topsoil thicknesses (2", 4" and 6" thick layers of this topsoil, originating from the donor site)), delivered to all recipient sites).
+```{r}
+knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
+```
+### Questions:
+###**Q1: 
+  Propagule determination: Do AM fungal communities resemble the donor site, regardless of where soil was delivered? Is provenance a driver of AM fungal community composition?
+
+###**Q2: 
+  Environmental filtering: Do AM fungal communities resemble the recipient sites, and are more dissimilar to the AM fungal communities from the donor site?
+
+###**Q3: 
+  Propagule pressure: Do AM fungal communities resemble the donor site more in higher level topsoil treatments, than they do in the control or dusted sites?
+  
+####**Outputs:** 
+
+#Analysis of similarity:
+
+  Determine the similarity of AMF communities at each recipient site to the donor site, from where topsoils originated from. 
+    Generate heatmaps with distances, to visually determine - which sites/samples are more similar to each other, and which are more dissimilar. 
+    Generate NMDS / Pcoa, plotted with Year as shapes and Sites as colors, and Description as ...?
+    Run permanova
+      Do AM fungal communities at each site resemble the recipient sites, and are they more dissimilar to the donor sites?
+      
+#Functional group richness:
+
+  Determine the richness of AMF functional groups in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment)
+  
+#Taxonomic diversity:
+
+  Determine the OTU taxa richness (alpha diversity) of AMF communities in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment).
+  Determine the beta diversity of AMF communities in the donor site, from where topsoils originated from, and in the recipient sites pre-topsoil delivery (pre-treatment), and post-topsoil delivery (post-treatment).
+  
+#Topsoil level treatments
+
+  Propagule pressure: Do AM fungal communities resemble the donor site more in thicker topsoil layer treatments than they do in the control or dusted sites?
+  Are the sites with Treat groups = S, more similar to the donor site than F, and are treatment groups S and F more similar to the donor site than T? Is this relationship clinal, with S being the thickest and most similar to donor site, followed by F, and then by T.
+  TO FIGURE OUT - how to address this question statistically??multiple regression with Treat on the X and similarity to Donor Site on the Y?? A permanova with multiple comparisons?
+  
+```{r}
+knitr::opts_chunk$set(cache=TRUE, tidy=TRUE, error = FALSE, eval = TRUE, message = FALSE, warning = FALSE, rows.print=5, cols.min.print=4, fig.width=6, fig.height=4.5)
+```
+Load Required Packages
+```{r}
+library(tidyverse)
+library(dplyr) ## for data wrangling - %>% function
+library(reshape2)  ##melt and cast data
+library(ggplot2) # plotting
+library(data.table)
+library(stringr)
+library(tidyr) # 'separate' function
+library(readxl) #read xlsx files into r on mac computer
+library(vegan) # dissimilarity matrix, permanova functions
+library(magrittr)
+library(cowplot)
+library(formatR)
+
+
+date<-format(Sys.time(), '%Y%b%d')
+date
+
+```
+
+** the following is adapted from 2017-07-07_Chapter_2_SSU_IntialClean **  
+
+Import data files
+```{r}
+# read in OTU table
+ssu<-fread('CSS_table_sorted.txt')
+str(ssu)
+
+## mapping data
+metassu<-fread('mapSal.txt', header=TRUE)
+metassu$Year<-as.character(metassu$Year)
+metassu$Rep<-as.factor(metassu$Rep)
+metassu$Treat<-as.factor(metassu$Treat)
+str(metassu)
+```
+Clean SSU headers  
+```{r}
+colnames(ssu)
+head(ssu$taxonomy)
+
+# rename columns
+names(ssu)[1] <- 'ssuotu' #rename first column
+names(ssu)[names(ssu)=='taxonomy'] <- 'ssutaxonomy' # rename column that is currently called taxonomy
+
+# split taxonomy column
+?str_match
+ssu$ssukingdom<-str_match(ssu$ssutaxonomy, "k__(.*?);")[,2]
+ssu$ssuphylum<-str_match(ssu$ssutaxonomy, "p__(.*?);")[,2]
+ssu$ssuclass<-str_match(ssu$ssutaxonomy, "c__(.*?);")[,2]
+ssu$ssuorder<-str_match(ssu$ssutaxonomy, "o__(.*?);")[,2]
+ssu$ssufamily<-str_match(ssu$ssutaxonomy, "f__(.*?);")[,2]
+ssu$ssugenus<-str_match(ssu$ssutaxonomy, "g__(.*?);")[,2]
+ssu$ssuspecies<-str_match(ssu$ssutaxonomy, "s__(.*?)$")[,2]
+
+unique(ssu$ssuspecies)
+colnames(ssu)
+ssu.save<-ssu
+#View(ssu)
+
+#remove Geosiphonaceae
+unique(ssu$ssufamily)
+drop.family <- c("Geosiphonaceae")
+ssu  <- ssu[-which(ssu$ssufamily %in% drop.family),]
+
+
+
+#remove no blast hits
+unique(ssu$ssutaxonomy)
+drop <-c("No blast hit")
+ssu  <- ssu[-which(ssu$ssutaxonomy %in% drop),]
+
+## alternatively, can use filtering to drop these and avoid rewriting things 
+ssu <- ssu.save%>%filter(ssufamily != "Geosiphonaceae" & ssutaxonomy != "No blast hit")
+
+ssu <- ssu[complete.cases(ssu),]
+unique(ssu$ssuspecies)
+```
+Add in functional groups 
+
+```{r Take data from wide to long and renaming variables}
+ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
+str(ssul) 
+
+
+```
+
+```{r include=FALSE, eval=FALSE}
+ssul <-melt(ssu, variable.name='ID',value.name='ssureads')
+str(ssul) 
+
+```
+OTU richnesses and read abundance for each taxonomic group 
+
+Below is in format for graphing
+```{r}
+ssugenusREADRICH<- data.frame(ssul %>%
+                                group_by(ID,ssugenus) %>%
+                                summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                                         Read_Abundance_Sample = sum(ssureads)))
+
+
+```
+
+Make SSU data frame with genus level OTU richness and Read abundance for each genus
+```{r}
+ssugenera <- data.frame(ssul %>%
+                          group_by(ID, ssugenus) %>%
+                          summarise(Genus_OTU_Richness = length(unique(ssuotu[ssureads>0])), 
+                                    Genus_Read_Abundance = sum(ssureads)))
+
+```
+Add metadata into ssu genus
+```{r}
+colnames(metassu) # need to edit for appropriate headers
+names(metassu)[names(metassu) == 'SampleID2'] <- 'ID'
+
+ssugenera<-ssugenera%>%
+  left_join(metassu, by='ID')
+str(ssugenera)
+
+```
+
+Adds meta data to data for box plot
+```{r}
+ssugenusREADRICH<-ssugenusREADRICH%>%
+  left_join(metassu, by='ID')
+str(ssugenusREADRICH)  
+
+filename<-paste0(date, '_ssu_genus_read_rich.csv')
+write.csv(ssugenusREADRICH, file = filename, row.names=FALSE)
+```
+#move ID to single line and genus to the length
+```{r}
+###For ssufamily, moves ID to single line and genus to the length
+LssugenusOTURICH <- dcast(ssugenus, ID ~ ssugenus, value.var = "Genus_OTU_Richness",  fun.aggregate = sum )
+LssugenusOTUREAD <- dcast(ssugenus, ID ~ ssugenus, value.var = "Genus_Read_Abundance",  fun.aggregate = sum )
+
+head(LssugenusOTUREAD)
+```
+
+Genera reads and richness together
+###WORKED ON THIS 20180826
+
+###REPLACED Functional.Group with ssugenus 
+###Work on changing to species in the next iteration
+
+```{r} 
+ssugenusREADRICHlong<- data.frame(ssul %>%
+                                group_by(ID) %>%
+                                summarise(OTU_Richness_Sample = length(unique(ssuotu[ssureads>0])),
+                                Acaulospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Acaulospora"])),
+                                Ambispora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Ambispora"])),
+                                Archaeospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Archaeospora"])),
+                                Claroideoglomus_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Claroideoglomus"])),
+                                Diversispora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Diversispora"])),
+                                Glomus_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Glomus"])),
+                                Kuklospora_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Kuklospora"])),
+                                Paraglomus_Richness = length(unique(ssuotu[ssureads>0 & ssugenus =="Paraglomus"])),
+                                Acaulospora_Read_Abundance = sum(ssureads[ssugenus == "Acaulospora"]),
+                                Ambispora_Read_Abundance = sum(ssureads[ssugenus == "Ambispora"]),
+                                Archaeospora_Read_Abundance = sum(ssureads[ssugenus == "Archaeospora"]),
+                                Claroideoglomus_Read_Abundance = sum(ssureads[ssugenus == "Claroideoglomus"]),
+                                Diversispora_Read_Abundance = sum(ssureads[ssugenus == "Diversispora"]),
+                                Glomus_Read_Abundance = sum(ssureads[ssugenus == "Glomus"]),
+                                Kuklospora_Read_Abundance = sum(ssureads[ssugenus == "Kuklospora"]),
+                                Paraglomus_Read_Abundance = sum(ssureads[ssugenus == "Paraglomus"]),
+                                Read_Abundance_Sample = sum(ssureads)))
+##View(ssugenusREADRICHlong)
+ssugenusREADRICHlong <- merge(ssugenusREADRICHlong, metassu, by = "ID")
+
+filename<-paste0(date, '_ssu_genus_read_rich.csv')
+write.csv(ssugenusREADRICHlong, file = filename, row.names=FALSE)
+
+str(ssugenusREADRICHlong)
+##View(ssugenusREADRICHlong)
+```
+#Non Unifrac distances, try with bray
+###WORK ON THIS
+#### Permanova  
+  Permanova tests for differences in composition among groups  
+    Reminder - permanova is always based on pairwise distances/dissimilarities.  
+      Can either nest Treat in Year with Year/Treat
+          Or, can restrict permutations within year, using strata='Year'
+          Or, can remove Year, and focus on Treat and other grouping varuables, like Site
+          
+##Also, dist.j<-vegdist(ssugenusREADRICHlong[,-1], method='jaccard', na.rm=TRUE)
+#USE BRAY #dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
+##############################################################################################################
+######################################
+## Part 3 - multivariate community analyses and data visualization
+```{r}
+library(dplyr)
+library(reshape2)
+library(tidyr)
+library(vegan)
+library(ggplot2)# ggplot resource -http://rpubs.com/collnell/ggplot2
+library(tidyverse) # useful packages in 1 - dplyr, ggplot2, tidyr +
+```
+# community matrix at order level with mapping data
+#otu_map<-read.csv('/Users/maltz/Desktop/RdataBreathe/otus_by_class.csv')
+```{r}
+head(ssugenusREADRICHlong)
+colnames(ssugenusREADRICHlong)
+```
+#Create the comm.grps from ssugenusREADRICHlong 
+#To make the comm.grps I want the first column (col 1), then I don't want (want to de-select) cols 2 through 22, and then I want the rest of the data = cols 23-30
+#This didn't work: 
+  comm.grps<-ssugenusREADRICHlong%>%dplyr::select('#SampleID':Description) #mapping data
+  #heads[1,-c(12:17)]
+  ##This will not work because it uses numeric syntax and the text, only use one or the other (only select; or only numeric -c)
+  comm.grps<-ssugenusREADRICHlong%>%dplyr::select['ID':Description,-c(2:22)] #mapping data
+  
+  
+  #So I used the longhand way of typing out all the column names that I wanted to keep
+  
+```{r}
+?dplyr::select
+
+comm.grps<-ssugenusREADRICHlong%>%dplyr::select('ID','Location','Year','Site','Treat','Rep','TSDel','Description') #mapping data
+colnames(comm.grps)
+```
+###WORK ON THIS!!!
+Make the comm.mat 
+##Make the changes for this for species for the next iteration
+```{r}
+comm.mat<-ssugenusREADRICHlong%>%dplyr::select(Acaulospora_Richness:Paraglomus_Richness) # community matrix - all but mapping data
+```
+######################################
+## comparing ecological communities
+# diversity vs composition
+# abundance and richness are univariate response variables used to quantify communities
+# in multivariate analyses we have these variables for multiple entities
+# similarly, multivariate analyses have counterparts in univariate stats - t-test, ANOVA, mutliple regression
+## univariate analyses of diversity
+```{r}
+list.files() #shows what is in folder
+  #View(comm.mat)
+  str(comm.grps)
+  head(comm.grps)
+    str(comm.mat)
+  head(comm.mat)
+```
+## does diversity vary across groups?
+# compute diversity indices
+#indices <- comm.grps
+#indices$richness <- rowSums(comm.mat >0)
+#indices$shannon <- diversity(comm.mat, index='shannon')
+#indices$rarified <- c(rarefy(comm.mat, sample=50)) # rarefied diversity for a given sample size
+```{r}
+indices <- comm.grps
+indices$richness <- rowSums(comm.mat >0)
+indices$shannon <- diversity(comm.mat, index='shannon')
+View(indices)
+#indices$rarified <- c(rarefy(comm.mat, sample=18103)) # rarefied diversity for a given sample size
+```
+
+  
+###WORK ON THIS!!!
+#Depending on what  I put first in the model (Treat or Description) The terms are either significant (p-value) or not-significant.
+
+Subset the data
+```{r subset data WestLoma}
+
+prevpost.mat=comm.mat[comm.grps$Site=="WL",]
+prevpost.grps=comm.grps[comm.grps$Site=="WL",]
+distWL.bc<-vegdist(prevpost.mat, method='bray', na.rm=TRUE)
+WLTreat.div<-adonis2(distWL.bc~Description, strata= Treat, data=prevpost.grps, permutations = 999, method="bray")
+WLTreat.div
+
+dvpostWL.mat=comm.mat[(comm.grps$Site=="WL" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+dvpostWL.grps=comm.grps[(comm.grps$Site=="WL" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+distDWL.bc<-vegdist(dvpostWL.mat, method='bray', na.rm=TRUE)
+DWLTreat.div<-adonis2(distDWL.bc~Description, strata= Treat, data=dvpost.grps, permutations = 999, method="bray")
+DWLTreat.div
+
+
+```
+
+```{r subset PS}
+prevpostPS.mat=comm.mat[comm.grps$Site=="PS",]
+prevpostPS.grps=comm.grps[comm.grps$Site=="PS",]
+distPS.bc<-vegdist(prevpostPS.mat, method='bray', na.rm=TRUE)
+PSTreat.div<-adonis2(distPS.bc~Description, strata= Treat, data=prevpostPS.grps, permutations = 999, method="bray")
+PSTreat.div
+dim(prevpostPS.grps)
+View(prevpostPS.grps)
+
+
+dvpostPS.mat=comm.mat[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+dvpostPS.grps=comm.grps[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+distDPS.bc<-vegdist(dvpostPS.mat, method='bray', na.rm=TRUE)
+DPSTreat.div<-adonis2(distDPS.bc~Description, strata= Treat, data=dvpostPS.grps, permutations = 999, method="bray")
+DPSTreat.div
+dim(dvpostPS.grps)
+```
+
+```{r subset Treatments of topsoil thickess PS}
+postTreatPS.mat=comm.mat[comm.grps$Site=="PS",]
+postTreatPS.grps=comm.grps[comm.grps$Site=="PS",]
+distTPS.bc<-vegdist(postTreatPS.mat, method='bray', na.rm=TRUE)
+
+View(postTreatPS.grps)
+
+contr.mineCD <- function(...) cbind(c(-1,1,0,0,0,0))
+PSTreatCD<-adonis2(distTPS.bc~Treat, data=postTreatPS.grps, permutations = 999, method="bray",contr.unordered = "contr.mineCD")
+PSTreatCD
+
+contr.mineCT <- function(...) cbind(c(-1,0,1,0,0,0))
+PSTreatCT<-adonis2(distTPS.bc~Treat, data=postTreatPS.grps, permutations = 999, method="bray",contr.unordered = "contr.mineCT")
+PSTreatCT
+
+contr.mineOC <- function(...) cbind(c(-1,0,0,0,0,1))
+PSTreatOC<-adonis2(distTPS.bc~Treat, data=postTreatPS.grps, permutations = 999, method="bray",contr.unordered = "contr.mineOC")
+PSTreatOC
+
+
+postTreatPS.div<-adonis2(distPS.bc~Description, strata= Treat, data=postTreatPS.grps, permutations = 999, method="bray")
+postTreatPS.div
+dim(postTreatPS.grps)
+View(postTreatPS.grps)
+
+
+dvpostPS.mat=comm.mat[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+dvpostPS.grps=comm.grps[(comm.grps$Site=="PS" & comm.grps$Description=="RecipientPost") | comm.grps$Site=="DS",]
+distDPS.bc<-vegdist(dvpostPS.mat, method='bray', na.rm=TRUE)
+DPSTreat.div<-adonis2(distDPS.bc~Description, strata= Treat, data=dvpostPS.grps, permutations = 999, method="bray")
+DPSTreat.div
+dim(dvpostPS.grps)
+```
+
+```{r permanova test}
+
+set.seed(304)
+?vegdist
+
+## are the results the same with other (non evolutionary) dissimiarlity indices?
+#dist.j<-vegdist(ssugenusREADRICHlong[,-1], method='jaccard')
+#dist.bc<-vegdist(ssugenusREADRICHlong[,-1], method='bray', na.rm=TRUE)
+#dist.j<-vegdist(comm.mat, method='jaccard')
+dist.bc<-vegdist(comm.mat, method='bray', na.rm=TRUE)
+AMTreat.div<-adonis2(dist.bc~Treat, data=comm.grps, permutations = 999, method="bray")
+AMTreat.div
+
+AMTD.div<-adonis2(dist.bc~Treat+Description, data=comm.grps, permutations = 999, method="bray")
+AMTD.div
+
+AMTSD.div<-adonis2(dist.bc~Treat+Site*Description, data=comm.grps, permutations = 999, method="bray")
+AMTSD.div
+
+AMD_ST_J.div<-adonis2(dist.bc~Description+Site*Treat, data=comm.grps, permutations = 999, method="bray")
+AMD_ST_J.div
+
+AMD_ST_BC.div<-adonis2(dist.bc~Description+Site+Treat, data=comm.grps, permutations = 999, method="bray")
+AMD_ST_BC.div
+
+```
+
+#Depending on what comes first in the model, we see different significance of these factors
+
+```{r}
+AMTreat.div<-adonis2(dist.bc~Treat*Description, data=comm.grps, permutations = 999, method="bray")
+AMTreat.div
+```
+
+```{r}
+
+
+
+amfMDS<-metaMDS(comm.mat, distance="bray", k=2, trymax=35, autotransform=TRUE) ##k is the number of dimensions
+amfMDS ##metaMDS takes eaither a distance matrix or your community matrix (then requires method for 'distance=')
+
+stressplot(amfMDS)
+
+#install.packages('ggplot2') ##plotting package
+library(ggplot2)
+
+NMDS1 <- amfMDS$points[,1] ##also found using scores(amfMDS)
+NMDS2 <- amfMDS$points[,2]
+?cbind
+amf.plot<-cbind(comm.grps, NMDS1, NMDS2, comm.mat)
+p<-ggplot(amf.plot, aes(NMDS1, NMDS2, color=Year))+
+  geom_point(position=position_jitter(.1), shape=3)+##separates overlapping points
+  stat_ellipse(type='t',size =1)+ ##draws 95% confidence interval ellipses
+  theme_minimal()
+p
+
+plot<-ggplot(amf.plot, aes(NMDS1, NMDS2, color=Treat))+
+  stat_ellipse(type='t',size =1)+
+  theme_minimal()+geom_text(data=amf.plot,aes(NMDS1, NMDS2, label=Site), position=position_jitter(.35))+
+  annotate("text", x=min(NMDS1), y=min(NMDS2), label=paste('Stress =',round(amfMDS$stress,3))) #add stress to plot
+plot
+
+```
+Subset the community data matrix
+Number of samples that are left
+```{r subset dm (bray)}
+summary(comm.grps)
+class(comm.mat)
+
+#subset the comm.mat and comm.grps
+#x=comm.mat[comm.grps$Year == "2015",]
+#y=comm.grps[comm.grps$Year == "2015",]
+
+```
+commented out some difficult lines
+```{r}
+#what is x?
+
+#SSMDS<-metaMDS(x, distance="bray", k = 2, trymax = 35, autotransform = TRUE) ##k is the number of dimensions
+#SSMDS ##metaMDS takes eaither a distance matrix or your community matrix (then requires method for 'distance=')
+
+#stressplot(SSMDS)
+
+#install.packages('ggplot2') ##plotting package
+library(ggplot2)
+
+#NMDS1 <- SSMDS$points[,1] ##also found using scores(amfMDS)
+#NMDS2 <- SSMDS$points[,2]
+?cbind
+
+```
+
+The code was stopping at this point, and I created a new chunk below
+
+
+```{r}
+
+#SSamf.plot<-cbind(y, NMDS1, NMDS2, x)
+
+Sp<-ggplot(SSamf.plot, aes(NMDS1, NMDS2, color=Site))+
+  geom_point(position=position_jitter(.1), shape=7)+##separates overlapping points
+ # stat_ellipse(type='t',size =1)+ ##draws 95% confidence interval ellipses
+  theme_minimal()
+Sp
+
+SSp<-ggplot(SSamf.plot, aes(NMDS1, NMDS2, color=Site))+
+  geom_point(position=position_jitter(.1), shape=3)+##separates overlapping points
+  stat_ellipse(type='t',size =1)+ ##draws 95% confidence interval ellipses
+  theme_minimal()
+SSp
+
+plot<-ggplot(SSamf.plot, aes(NMDS1, NMDS2, color=Treat))+
+  stat_ellipse(type='t',size =1)+
+  theme_minimal()+geom_text(data=amf.plot,aes(NMDS1, NMDS2, label=Site), position=position_jitter(.35))+
+  annotate("text", x=min(NMDS1), y=min(NMDS2), label=paste('Stress =',round(amfMDS$stress,3))) #add stress to plot
+plot
+```
+
+```{r}
+#ad.bc<-adonis2(dist.bc~Month+Year+Elevation, data=grps, permutations=1000)
+#ad.bc
+
+#ad.j<-adonis2(dist.j~Month+Year+Elevation, data=grps, permutations=1000)
+#ad.j
+
+
+```
+
+
+
+
+```{r}
+#salvage.div<-adonis2(bird.dist~DIVERSITY, data=birds, permutations = 999, method="bray", strata="PLOT")
+#bird.div
+```
+
+Examining the statistic support for increased rhizophilic richness in recipientpost plots
+```{r glm on Rhizophilic richness and metadata}
+y<-ssuguildRICH$Rhizophilic_Richness
+str(y)
+D<-ssuguildRICH$Description
+S<-ssuguildRICH$Site
+
+length(S)
+length(D)
+?lm
+#lm(y~D)
+
+SRhizRich<-lm(y ~ S)
+str(SRhizRich)
+
+DRhizRich<-lm(y~D)
+str(DRhizRich)
+
+DSRhizRich<-lm(y~S*D)
+str(DSRhizRich)
+
+summary(DSRhizRich)
+
+y<-ssuguildRICH$Rhizophilic_Richness
+str(y)
+D<-ssuguildRICH$Description
+S<-ssuguildRICH$Site
+length(S)
+length(D)
+?lm
+
+glm(y~D)
+G_SRhizRich<-glm(y~S)
+str(G_SRhizRich)
+
+G_DRhizRich<-glm(y~D)
+str(G_DRhizRich)
+summary(G_DRhizRich)
+
+DSRhizRich<-lm(y~S*D)
+str(DSRhizRich)
+
+summary(DSRhizRich)
+lm(y~D*S)
+lm(y~D+S)
+?glm
+glm(y ~ D)
+
+ #Description+Site
+
+```
+**start '2017_16_07_SSU_Boxplots.R'** 
+Plotting
+```{r}
+#richness
+plot.df<-ssuguildREADRICH
+str(plot.df)
+
+richbox <- ggplot(plot.df, aes(x = Functional.Group , y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+richbox
+
+richbox <- richbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Richness")    
+richbox
+
+richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
+richbox
+```  
+```{r, eval=FALSE}
+##reads
+plot.read<-ssuguildREADRICH
+str(plot.read)
+
+reachbox <- ggplot(plot.read, aes(x = Functional.Group, y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+reachbox
+
+reachbox <- reachbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Reads")    
+reachbox
+
+reachbox <-reachbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
+reachbox
+```
+ADAPTED FROM #GLMM for roots and soil OTU Richness SSU by functional group-modified from "GLM_NAU_6_2017"
+#---different models for each functional group
+#Author: Michala Phillips
+#MODIFY FOR THIS DATA
+```{r}
+library(car)
+require(MASS)
+library(lme4)
+```
+
+#Choose distribution based on data
+# find the right distribution for data
+```{r}
+
+ssuguildREADRICHlong$OTU_Richness_Sample.t <- ssuguildREADRICHlong$OTU_Richness_Sample + 1
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "norm")
+
+#LOGNORMAL
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample, "lnorm")
+
+#NEG BINOMIAL
+nbinom <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "Negative Binomial")
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "nbinom", size = nbinom$estimate[[1]], mu = nbinom$estimate[[2]])
+
+#POISSON
+poisson <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "Poisson")
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "pois", lambda = poisson$estimate)
+
+#GAMMA
+gamma <- fitdistr(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma")
+qqp(ssuguildREADRICHlong$OTU_Richness_Sample.t, "gamma", shape = gamma$estimate[[1]], rate = gamma$estimate[[2]])
+#
+```
+```{r glm gaussian}
+modelingAMF <- glm(OTU_Richness_Sample.t ~ Site + Treat, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
+modelingAMF
+
+modelingAMF_MP <- glm(OTU_Richness_Sample.t ~ Site + Treat + Description + Rep + Year, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
+plot(modelingAMF_MP)
+stepAIC(modelingAMF_MP) 
+modelingAMF_MP
+
+
+stepAIC(modelingAMF) 
+modelingAMFfinal <- glm(OTU_Richness_Sample.t ~ Site + Treat, family = gaussian(link = "identity"), data = ssuguildREADRICHlong)
+
+summary(modelingAMFfinal)
+plot(modelingAMFfinal)
+
+
+```
+```{r modeling }
+modelingAMF <- glm(OTU_Richness_Sample.t ~ Site + Treat, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
+modelingAMF
+
+stepAIC(modelingAMF) 
+modelingAMFfinal <- glm(OTU_Richness_Sample.t ~ Site + Treat, family = gaussian(link = "identity"), data = ssuguildREADRICHlong)
+
+summary(modelingAMFfinal)
+plot(modelingAMFfinal)
+```
+#Working on examining other variables 
+```{r}
+modelingAMF <- glm(OTU_Richness_Sample.t ~ Treat + Site, data = ssuguildREADRICHlong, family = gaussian(link = "identity"))
+```
+Plotting
+```{r}
+plot.df<-ssuguildREADRICH
+str(plot.df)
+
+richbox <- ggplot(plot.df, aes(x = Functional.Group , y = OTU_Richness_Sample)) + geom_boxplot(aes(fill = Description)) 
+richbox
+
+richbox <- richbox + theme_bw(base_size = 15) + xlab("Functional Group") +ylab("AMF Taxa Richness")    
+richbox
+
+richbox <-richbox + scale_fill_manual(values=c('red', 'darkslateblue','gold3'))
+richbox
+
+```
+
+ADAPTED FROM #GLMM for roots and soil OTU Richness SSU by functional group-modified from "GLM_NAU_6_2017"
+#---different models for each functional group
+#Author: Michala Phillips
+#MODIFY FOR THIS DATA
+#Tried with negative binomial but it didn't work
+```{r IntroPermanova}
+#salvage.div<-adonis2(bird.dist~DIVERSITY, data=birds, permutations = 999, method="bray", strata="PLOT")
+#bird.div
+
+
+```
+
